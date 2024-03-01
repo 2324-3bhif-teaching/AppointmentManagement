@@ -1,0 +1,19 @@
+= Terminverwaltung
+:toc: left
+:sectnums:
+:toclevels: 2
+:table-caption:
+:linkattrs:
+
+== Ist-Zustand
+
+Besucher beim Tag der offenen Tür müssen mit langen Wartezeiten rechnen,
+wenn sie den Roboterführerschein machen wollen, da sie mit dem FIFO Prinzip
+abgearbeitet werden. Besucher verlieren das Interesse und verlassen die Schlange.
+
+== Soll-Zustand
+
+Besucher sollen beim Empfang eine Nummer erhalten, die auf den Fernsehern in
+der Aula angezeigt werden sollen. Die Nummer soll aussagen, wann der Besucher
+an der Reihe ist. Somit kann der Besucher die Wartezeit sinnvoll nutzen und verliert
+nicht das Interesse, da er weiß, wann er an der Reihe ist.
