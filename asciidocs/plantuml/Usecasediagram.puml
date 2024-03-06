@@ -1,0 +1,20 @@
+@startuml
+
+left to right direction
+
+actor "Benutzer" as user
+actor "Administrator" as admin
+
+rectangle Terminverwaltung {
+    usecase "Termine abfragen" as termine
+    usecase "Registrieren" as register
+    usecase "nächste Person einreihen" as skip
+
+    user -- termine
+    user -- register
+    admin -- termine
+    admin -- register
+    admin -- skip
+}
+
+@enduml

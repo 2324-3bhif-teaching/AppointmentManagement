@@ -90,6 +90,18 @@ Beim Betätigen der "Hinzufügen-"Taste wird die Nummer in die Warteschlange hin
 Es wird auch eine Bestätigung angezeigt, dass die Nummer hinzugefügt wurde, andererseits wird eine Fehlermeldung angezeigt, in welcher Aufgefordert wird zu der Stadtion zu gehen und sich zu melden.
 ====
 
+== Diagramme
+
+.Use-case diagram
+[%collapsible]
+====
+[plantuml,usecase.png]
+----
+include::plantuml/Usecasediagram.puml[]
+----
+====
+
+
 == Zielsetzung
 
 Die Wartezeit für die Besucher sollen minimiert werden und für eine bessere Besucherauslastung der Station sorgen.
