@@ -92,15 +92,23 @@ Es wird auch eine Bestätigung angezeigt, dass die Nummer hinzugefügt wurde, an
 
 == Diagramme
 
-.Use-case diagram
+.Use-case Diagramm
 [%collapsible]
 ====
-[plantuml,usecase.png]
+[plantuml, Text, png]
 ----
-include::plantuml/Usecasediagram.puml[]
+include::plantuml/Usecasediagramm.puml[]
 ----
 ====
 
+.Klassen Diagramm
+[%collapsible]
+====
+[plantuml, png]
+----
+include::plantuml/Klassendiagramm.puml[]
+----
+====
 
 == Zielsetzung
 

@@ -1,0 +1,28 @@
+@startuml
+class Queue {
+    - waitingPersons: List<Visitor>
+}
+
+class Visitor {
+    - code: String
+    - controlSystem: Enum
+}
+
+class Administrator {
+    - password: Hash
+    + addVisitorToQueue(visitor: Visitor)
+    + removeVisitorFromQueue(visitor: Visitor)
+    + skipVisitor()
+}
+
+enum controlSystem {
+    controller
+    dance mat
+    sensor
+    steering wheel
+}
+
+Queue "1" -- "*" Visitor : < waits in
+Administrator "1" -- "*" Queue : > manage
+Visitor --> controlSystem
+@enduml
