@@ -1,0 +1,14 @@
+= Arbeitsstunden
+
+[cols="1, 1, 4, 1", options="header"]
+|===
+| *Datum* | *Dauer (Minuten)* | *Beschreibung* | *Issue Nummer*
+|  |  |  |
+| 28.02.2024 | 158 | Erstellung der Projektidee, Projektauftrags & Pflichtenheft |
+| 01.03.2024 | 73 | Zeichnen der Mockups |
+| 06.03.2024 | 23 | Erstellen des Usecase-Diagramms |
+| 10.04.2024 | 31 | Erstellen eines Klassen-Diagramms | #1
+| 11.04.2024 | 46 | Issues anlegen |
+|  |  |  |
+|  | 331 |  |
+|===
