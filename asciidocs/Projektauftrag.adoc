@@ -15,7 +15,7 @@
 Termine vergeben, die mit einer entsprechenden Nummer versehen sind.
 | Projektergebnis | Unser Ziel ist es, den Besuchern eine Nummer zu geben, damit Sie entsprechend zum Termin erscheinen und somit nicht das Interesse an dem Roboterführerschein verlieren.
 | Projektziel(e) | Aufsetzen einer Warteschlange & Anzeige der Wartezeit auf einem Bildschirm
-| Projektbeschreibung | Mit der App werden die Wartezeiten von den Roboterführerschein verkürzt durch ordnungsgemäße Terminvergabe
+| Projektbeschreibung | Mit der App werden die Wartezeiten von dem Roboterführerschein verkürzt durch ordnungsgemäße Terminvergabe
 |===
 
 == Projektphasen / Meilensteine
@@ -41,7 +41,7 @@ Beschreibung der Projektphasen und deren überprüfbarer Zwischenergebnisse.
 
 [cols="h, s"]
 |===
-| Projektrisiken | Die Schüler beim Empfang vergessen die Nummer an den Entsprechenden Besucher zu geben, oder schreiben die falsche Nummer auf.
+| Projektrisiken | Die Schüler beim Empfang vergessen die Nummer an den entsprechenden Besucher zu geben, oder schreiben die falsche Nummer auf.
 | Projektteam | Ignac Antonio & Stroschneider Fabian
 | Abschluss des Projektauftrags | Datum, Unterschriften aller Verantwortlichen
 |===
