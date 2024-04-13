@@ -1,4 +1,4 @@
-= Dokumentation Appointment Manager
+= Dokumentation Appointment Management
 :toc: left
 :sectnums:
 :toclevels: 1
