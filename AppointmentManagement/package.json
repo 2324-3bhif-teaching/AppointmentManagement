@@ -1,0 +1,38 @@
+{
+  "name": "appointmentmanagement",
+  "version": "1.0.0",
+  "scripts": {
+    "server-dev": "npx nodemon app.ts",
+    "start": "tsx ./src/app.ts"
+  },
+  "author": "stroschneider.fabian",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "http-status-codes": "^2.2.0",
+    "path": "^0.12.7",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.15",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^7.0.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public",
+      "**/*.json"
+    ]
+  }
+}

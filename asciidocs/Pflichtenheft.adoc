@@ -95,7 +95,7 @@ Es wird auch eine Bestätigung angezeigt, dass die Nummer hinzugefügt wurde, an
 .Use-case Diagramm
 [%collapsible]
 ====
-[plantuml, Text, png]
+[plantuml, Usecasediagramm, png]
 ----
 include::plantuml/Usecasediagramm.puml[]
 ----
@@ -104,7 +104,7 @@ include::plantuml/Usecasediagramm.puml[]
 .Klassen Diagramm
 [%collapsible]
 ====
-[plantuml, png]
+[plantuml, Klassendiagramm, png]
 ----
 include::plantuml/Klassendiagramm.puml[]
 ----
