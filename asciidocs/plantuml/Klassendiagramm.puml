@@ -6,6 +6,7 @@ class Queue {
 class Visitor {
     - code: String
     - controlSystem: Enum
+    - inQueue: Boolean
 }
 
 class Administrator {
