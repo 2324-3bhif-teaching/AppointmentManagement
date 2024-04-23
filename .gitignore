@@ -9,6 +9,7 @@
 .vscode/
 .idea/
 *.js
+*.db
 !jest.config.js
 package-lock.json
 
