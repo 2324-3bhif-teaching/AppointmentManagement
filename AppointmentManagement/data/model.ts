@@ -1,4 +1,4 @@
-export interface IAdministrator {
+    export interface IAdministrator {
     id?: number;
     email: string;
     passwort: string;
