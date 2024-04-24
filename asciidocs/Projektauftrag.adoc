@@ -10,12 +10,14 @@
 [cols="h, s"]
 |===
 | Projektbezeichnung | Terminvergabe
-| Projektauftraggeber | HTL-Leonding
-| Projekthintergrund | Besucher beim Tag der offenen Tür müssen mit Wartezeiten rechnen, wenn sie denn Roboterführerschein machen wollen. Wir möchten dieses Problem lösen, indem wir 
-Termine vergeben, die mit einer entsprechenden Nummer versehen sind.
-| Projektergebnis | Unser Ziel ist es, den Besuchern eine Nummer zu geben, damit Sie entsprechend zum Termin erscheinen und somit nicht das Interesse an dem Roboterführerschein verlieren.
-| Projektziel(e) | Aufsetzen einer Warteschlange & Anzeige der Wartezeit auf einem Bildschirm
-| Projektbeschreibung | Mit der App werden die Wartezeiten von dem Roboterführerschein verkürzt durch ordnungsgemäße Terminvergabe
+| Projektauftraggeber | H.Aitenbichler & M.Haslinger
+| Projekthintergrund | Besucher beim Tag der offenen Tür müssen mit Wartezeiten rechnen, bei jeglichen Stationen mit
+                       beschränkten Ressourcen.
+| Projektergebnis | Durch ordnungsgemäße Terminvergabe werden die Wartezeiten verkürzt.
+| Projektziel(e) | Den Besuchern einen angenehmeren Aufenthalt zu ermöglichen, durch keine langen Warteschlangen.
+| Projektbeschreibung | Die Anwendung ermöglicht es den Besuchern einen QR-Code bei einer Stadtion zu scannen, um einen
+                        Termin zu erhalten. Der Besucher sieht an welcher Stelle, er sich in der Warteschlange befindet
+                        und bekommt eine Benachrichtigung, wenn er an der Reihe ist.
 |===
 
 == Projektphasen / Meilensteine
@@ -25,8 +27,9 @@ Beschreibung der Projektphasen und deren überprüfbarer Zwischenergebnisse.
 |===
 | Phase | Meilenstein / Ergebnis | Soll-Termin | Freigabe
 
-| Mockups erstellen | fertige Mockups | 06.03.2024 | -
-| Use-Cases erstellen | fertige Use-Cases | 06.03.2024 | -
+| Initiierung | Projektdokumente sind vollständig | 06.03.2024 | -
+| Durchführung | Anlegen neuer Stadtionen & Queues | 30.04.2024 | -
+| Durchführung | Anmelden mithilfe der Keycloack | 8.05.2024 | -
 |===
 
 == Projektdaten
@@ -34,14 +37,14 @@ Beschreibung der Projektphasen und deren überprüfbarer Zwischenergebnisse.
 [cols="h, s"]
 |===
 | Projektstart | 07.02.2024
-| Projektende | 
+| Projektende | --.06.2024
 |===
 
 == Projekt
 
 [cols="h, s"]
 |===
-| Projektrisiken | Die Schüler beim Empfang vergessen die Nummer an den entsprechenden Besucher zu geben, oder schreiben die falsche Nummer auf.
+| Projektrisiken | Ein Besucher kommt nicht zum Termin und Melded sich nicht ab
 | Projektteam | Ignac Antonio & Stroschneider Fabian
 | Abschluss des Projektauftrags | Datum, Unterschriften aller Verantwortlichen
 |===

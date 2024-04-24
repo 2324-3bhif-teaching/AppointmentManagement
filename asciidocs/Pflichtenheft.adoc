@@ -6,7 +6,7 @@
 
 Version: 1.0
 
-Version Date: 01-03-2024
+Version Date: 24-04-2024
 
 Authors:
 
@@ -15,45 +15,45 @@ Authors:
 
 == Beschreibung der Ausgangslage
 
-Am Tag der offenen Türe gibt es die Möglichkeit einen
-Roboterführerschein zu absolvieren
+Am Tag der offenen Türe gibt es die Möglichkeiten bei verschiedenen Stationen eine Aktivität auszuprobieren.
 
 == Ist-Zustand
 
-Derzeit ist eine lange Wartezeit beim Absolvieren des
-Roboterführerscheins nötig
+Derzeit ist eine lange Wartezeit beim Absolvieren der verschiedenen Aktivitäten.
 
 == Problemstellung
 
-Die Besucher kommen derzeit in Gruppen zu der Stadtion dadurch ist die Station häufig ausgelastet, jedoch gibt es auch das Gegenteil im welchen fall niemand sich der Prüfung stellt.
+Die Besucher kommen derzeit in Gruppen zu der Stadtion dadurch ist die Station häufig ausgelastet, jedoch gibt es auch
+das Gegenteil im welchen fall sich niemand anstellt.
 
 == Aufgabenstellung
 
 === Funktionale Anforderungen
 
-Das Program soll die aktuellen und nachkommenden Nummern anzeigen.
+Es soll möglich sein mithilfe einer QR-Scanner-App einen QR-Code einer Stadtion zu scannen und sich somit in die Queue
+einzureihen.
 
-Es soll konfigurierbar sein, wie viele Roboter gleichzeitig fahren.
+Der Besucher kann sich in mehrere Queues einreihen und bekommt eine Benachrichtigung, wenn er an der Reihe ist.
 
 === Nicht-funktionale Anforderungen
 
 * Sicherheitsanforderung
-- Die Daten sollen vor Dritten geschützt werden.
+** Die Daten sollen vor Dritten geschützt werden.
 
 * Zuverlässigkeit
-- Das System soll, in einer vorhersehbaren und zuverlässigen Weise zu funktionieren.
+** Das System soll, in einer vorhersehbaren und zuverlässigen Weise zu funktionieren.
 
 * Benutzbarkeit
-- Das System soll, so gestaltet werden, dass es einfach und intuitiv von Benutzern verwendet werden kann.
+** Das System soll, so gestaltet werden, dass es einfach und intuitiv von Benutzern verwendet werden kann.
 
 * Effizienz
-- Das System soll die Ressourcen effizient nutzen.
+** Das System soll die Ressourcen effizient nutzen.
 
 * Übertragbarkeit
-- Das System soll, auf andere Systeme oder Umgebungen übertragen werden können.
+** Das System soll, auf andere Systeme oder Umgebungen übertragen werden können.
 
 * Wartbarkeit
-- Das System soll, Wartung- und Reparaturarbeiten in einfacher und schneller Weise durchführen können.
+** Das System soll, Wartung- und Reparaturarbeiten in einfacher und schneller Weise durchführen können.
 
 === MockUp
 
@@ -117,6 +117,8 @@ Die Wartezeit für die Besucher sollen minimiert werden und für eine bessere Be
 == Rahmenbedingungen
 
 Programmiersprache: Typescript
+Datenbank: Sqlite
+Keycloack
 
 == Administratives
 

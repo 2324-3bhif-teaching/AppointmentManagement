@@ -12,6 +12,8 @@
 | 13.04.2024 | 23 | Hinzufügen der gh-actions | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/8[#8]
 | 13.04.2024 | 87 | Implementieren der Projektstruktur | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/2[#2]
 | 17.04.2024 | 5 | Fix gh-actions | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/9[#9]
+| 23.04.2024 | 106 | Aufsetzen der Datenbank struktur | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/3[#3]
+| 24.04.2024 | 53 | Überarbeiten der Projektfiles | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/11[#11]
 |  |  |  |
-|  | 446 |  |
+|  | 605 |  |
 |===
