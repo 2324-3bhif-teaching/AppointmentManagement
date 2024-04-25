@@ -1,33 +1,37 @@
 @startuml
 
 class Administrator {
-    - email: String
-    - password: String
-    - queue: List<Queue>
+    - id: int
+    - email: text
+    - password: text
 }
 
 class Station {
+    - id: int
     - stationName: String
-    - ques: List<Queue>
 }
 
 class QueueManager {
+    - id: number
+    - admin: Administrator
     - queue: Queue
-    - administrator: Administrator
 }
 
 class Queue {
-    - waitingPersons: List<Visitor>
+    - id: int
+    - name: text
+    - station: Station
 }
 
 class WaitingPosition {
+    - id: int
     - visitor: Visitor
     - queue: Queue
 }
 
 class Visitor {
     - id: int
-    - joinTime: DateTime
+    - joinTime: text
 }
 
 Administrator "*" - "*" Queue : > manages
