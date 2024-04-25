@@ -1,4 +1,7 @@
-class QueueManager {
+import {Admin} from "./administrator";
+import {Queue} from "./Queue";
+
+export class QueueManager {
     private mQueue: Queue
     private mAdmin: Admin
 

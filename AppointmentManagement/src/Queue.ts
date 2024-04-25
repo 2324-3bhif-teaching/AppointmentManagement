@@ -1,4 +1,6 @@
-class Queue {
+import {Visitor} from "./Visitor";
+
+export class Queue {
     private mWaitingPersons: Visitor[]
 
     constructor(mWaitingPersons: Visitor[]) {
@@ -9,7 +11,10 @@ class Queue {
         return this.mWaitingPersons
     }
     public addWaitingPersons(visitor: Visitor) {
-        this.mWaitingPersons.push(visitor)
+        const duplicate = this.mWaitingPersons.find(v => v.id === visitor.id);
+        if (!duplicate) {
+            this.mWaitingPersons.push(visitor);
+        }
     }
     public removeWaitingPersons(visitor: Visitor) {
         this.mWaitingPersons = this.mWaitingPersons.filter((v) => v !== visitor)

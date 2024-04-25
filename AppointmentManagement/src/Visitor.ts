@@ -1,4 +1,4 @@
-class Visitor {
+export class Visitor {
     private mId: number;
     private mJoinTime: Date;
 

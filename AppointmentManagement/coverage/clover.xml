@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1714046275978" clover="3.2.0">
+  <project timestamp="1714046275978" name="All files">
+    <metrics statements="36" coveredstatements="24" conditionals="14" coveredconditionals="10" methods="21" coveredmethods="12" elements="71" coveredelements="46" complexity="0" loc="36" ncloc="36" packages="1" files="4" classes="4"/>
+    <file name="Queue.ts" path="C:\Users\rezis\Documents\AppointmentManagement\AppointmentManagement\src\Queue.ts">
+      <metrics statements="9" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="7" count="6" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+    </file>
+    <file name="adminManager.ts" path="C:\Users\rezis\Documents\AppointmentManagement\AppointmentManagement\src\adminManager.ts">
+      <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="11" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="0" type="stmt"/>
+    </file>
+    <file name="administrator.ts" path="C:\Users\rezis\Documents\AppointmentManagement\AppointmentManagement\src\administrator.ts">
+      <metrics statements="11" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="6" count="6" type="cond" truecount="4" falsecount="1"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="9" count="6" type="stmt"/>
+      <line num="10" count="6" type="stmt"/>
+      <line num="14" count="8" type="cond" truecount="0" falsecount="1"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="16" count="8" type="stmt"/>
+      <line num="19" count="4" type="cond" truecount="0" falsecount="1"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="4" type="stmt"/>
+    </file>
+    <file name="station.ts" path="C:\Users\rezis\Documents\AppointmentManagement\AppointmentManagement\src\station.ts">
+      <metrics statements="12" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="5"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
+      <line num="13" count="4" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
+      <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="33" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
