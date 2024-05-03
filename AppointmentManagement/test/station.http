@@ -1,0 +1,5 @@
+### Get all stations
+GET http://localhost:3000/api/station
+
+### Get station by id
+GET http://localhost:3000/api/station/2
