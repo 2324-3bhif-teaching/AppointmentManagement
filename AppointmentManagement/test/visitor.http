@@ -1,0 +1,14 @@
+### Get all visitors
+GET http://localhost:3000/api/visitor
+
+### Get visitor by id
+GET http://localhost:3000/api/visitor/1
+
+### Add visitor
+POST http://localhost:3000/api/visitor
+Content-Type: application/json
+
+{
+  "id": 4,
+  "joinTime": "2024-05-03 12:02:46"
+}

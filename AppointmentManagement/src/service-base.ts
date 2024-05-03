@@ -2,12 +2,12 @@ import {Unit} from "./unit";
 import {Statement} from "sqlite";
 
 export abstract class ServiceBase {
-    constructor(protected readonly unit: Unit) {}
 
-    protected async executeStmt(stmt: Statement): Promise<[success: boolean, id: number | null]> {
+    protected constructor(protected readonly unit: Unit) {}
+
+    protected async executeStmt(stmt: Statement): Promise<boolean> {
         const result = await stmt.run();
-        const id: number | null = ServiceBase.nullIfUndefined(result.lastID);
-        return [result.changes === 1, id];
+        return result.changes === 1;
     }
 
     protected static nullIfUndefined<T>(entity: T | undefined): T | null {
