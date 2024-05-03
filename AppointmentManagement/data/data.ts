@@ -56,7 +56,7 @@ export class DB {
         await connection.run(`INSERT INTO Queue (id, name, station)
                               VALUES (1, 'Roboterführerschein-Controller', 1);`);
         await connection.run(`INSERT INTO Queue (id, name, station)
-                              VALUES (2, 'Roboterführerschein-Matte', 1);`);
+                              VALUES (2, 'Roboterführerschein-Matte', 3);`);
         await connection.run(`INSERT INTO Queue (id, name, station)
                               VALUES (3, 'VR-Brille', 1);`);
         await connection.run(`INSERT INTO WaitingPosition (id, visitor, queue)
