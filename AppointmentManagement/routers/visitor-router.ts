@@ -89,3 +89,27 @@ visitorRouter.post("/", async (req, res) => {
         await unit.complete();
     }
 });
+
+visitorRouter.delete("/queues/:queueId/visitor/:visitorId", async (req, res) => {
+    const queueId = parseInt(req.params.queueId);
+    const visitorId = parseInt(req.params.visitorId);
+
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const success = await service.deleteQueueByVisitorId(queueId, visitorId);
+
+        if (success) {
+            await unit.complete();
+            res.status(StatusCodes.OK).send(true);
+        } else {
+            await unit.complete();
+            res.status(StatusCodes.NOT_FOUND).send(false);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});

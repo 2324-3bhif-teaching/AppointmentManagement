@@ -33,4 +33,14 @@ export class VisitorService extends ServiceBase {
 
         return await this.executeStmt(stmt);
     }
+
+    public async deleteQueueByVisitorId(queueId: number, visitorId: number): Promise<boolean> {
+        const stmt = await this.unit.prepare('DELETE FROM WaitingPosition WHERE visitor = ?1 AND queue = ?2',
+            {
+            1: visitorId,
+            2: queueId
+        });
+
+        return await this.executeStmt(stmt);
+    }
 }

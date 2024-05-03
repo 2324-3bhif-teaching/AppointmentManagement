@@ -12,3 +12,6 @@ Content-Type: application/json
   "id": 4,
   "joinTime": "2024-05-03 12:02:46"
 }
+
+### Delete Visitor from Queue
+DELETE http://localhost:3000/api/visitor/queues/1/visitor/2
