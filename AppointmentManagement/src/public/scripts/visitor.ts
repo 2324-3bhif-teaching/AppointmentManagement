@@ -27,7 +27,7 @@ async function loadQueues(){
     try {
         await setCurrentUser();
         const queues = await fetchRestEndpoint("http://localhost:3000/api/visitor/queues/" + currentVisitorID, 'GET');
-        const tableElement = document.getElementById('queueTable');
+        const tableElement = document.getElementById('queueBody');
         if (tableElement) {
             tableElement.innerHTML = createTableRows(queues);
         } else {

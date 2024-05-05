@@ -6,6 +6,7 @@
     <title>My Queues</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/visitor.css">
     <script src="scripts/visitor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,13 +26,18 @@
         </ul>
     </div>
 </nav>
-<div class="container rounded bg-white mt-5 mb-5">
+<div>
     <table id="queueTable">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Button</th>
+            </tr>
+        </thead>
+        <tbody id="queueBody">
 
+        </tbody>
     </table>
 </div>
 </body>
