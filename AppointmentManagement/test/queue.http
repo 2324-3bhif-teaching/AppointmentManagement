@@ -1,0 +1,8 @@
+### Get all queues
+GET http://localhost:3000/api/queue
+
+### Get admin by id
+GET http://localhost:3000/api/queue/2
+
+### Get Queues by admin id
+GET http://localhost:3000/api/queue/stations/2
