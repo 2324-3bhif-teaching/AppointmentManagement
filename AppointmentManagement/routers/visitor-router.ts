@@ -70,7 +70,6 @@ visitorRouter.post("/", async (req, res) => {
 
         const visitor: IVisitor = {
             id: req.body.id,
-            joinTime: req.body.joinTime
         };
 
         const success = await service.insert(visitor);
