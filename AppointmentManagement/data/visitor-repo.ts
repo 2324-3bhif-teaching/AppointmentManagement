@@ -19,15 +19,14 @@ export class VisitorService extends ServiceBase {
     }
 
     public async getQueueByVisitorId(id: number): Promise<IQueue | null> {
-        const stmt: Statement = await this.unit.prepare('SELECT q.* FROM Queue q JOIN WaitingPosition wm ON q.id = wm.queue WHERE wm.visitor = ?;', id);
+        const stmt: Statement = await this.unit.prepare('SELECT q.* FROM Queue q JOIN WaitingPosition wp ON q.id = wp.queueId WHERE wp.visitorId = ?;', id);
         return ServiceBase.nullIfUndefined(await stmt.all<IQueue>());
     }
 
     public async insert(visitor: IVisitor): Promise<boolean> {
-        const stmt = await this.unit.prepare('insert into Visitor (id, joinTime) values (?1, ?2)',
+        const stmt = await this.unit.prepare('insert into Visitor (id) values (?1)',
             {
                 1: visitor.id,
-                2: visitor.joinTime
             }
         );
 
@@ -35,7 +34,7 @@ export class VisitorService extends ServiceBase {
     }
 
     public async deleteQueueByVisitorId(queueId: number, visitorId: number): Promise<boolean> {
-        const stmt = await this.unit.prepare('DELETE FROM WaitingPosition WHERE visitor = ?1 AND queue = ?2',
+        const stmt = await this.unit.prepare('DELETE FROM WaitingPosition WHERE visitorId = ?1 AND queueId = ?2',
             {
             1: visitorId,
             2: queueId

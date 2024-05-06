@@ -47,33 +47,34 @@ export class DB {
                               VALUES (2, 'fabian@htl-leonding.ac.at', '123');`);
         await connection.run(`INSERT INTO Administrator (id, email, passwort)
                               VALUES (3, 'test@htl-leonding.ac.at', 'abc');`);
-        await connection.run(`INSERT INTO Visitor (id, joinTime)
-                              VALUES (1, '2024-05-02 15:15:24');`);
-        await connection.run(`INSERT INTO Visitor (id, joinTime)
-                              VALUES (2, '2024-05-03 08:48:13');`);
-        await connection.run(`INSERT INTO Visitor (id, joinTime)
-                              VALUES (3, '2024-05-02 08:50:56');`);
-        await connection.run(`INSERT INTO Queue (id, name, station)
+        await connection.run(`INSERT INTO Visitor (id)
+                              VALUES (1);`);
+        await connection.run(`INSERT INTO Visitor (id)
+                              VALUES (2);`);
+        await connection.run(`INSERT INTO Visitor (id)
+                              VALUES (3);`);
+        await connection.run(`INSERT INTO Queue (id, name, stationId)
                               VALUES (1, 'Roboterführerschein-Controller', 1);`);
-        await connection.run(`INSERT INTO Queue (id, name, station)
+        await connection.run(`INSERT INTO Queue (id, name, stationId)
                               VALUES (2, 'Roboterführerschein-Matte', 3);`);
-        await connection.run(`INSERT INTO Queue (id, name, station)
+        await connection.run(`INSERT INTO Queue (id, name, stationId)
                               VALUES (3, 'VR-Brille', 1);`);
-        await connection.run(`INSERT INTO WaitingPosition (id, visitor, queue)
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (1, 1, 1, '2024-5-5 19:27:04', 0);`);
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (2, 2, 1, '2024-5-5 19:28:19', 1);`);
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (3, 2, 3, '2024-5-5 19:16:55', 1);`);
+        await connection.run(`INSERT INTO QueueManager (id, administratorId, queueId)
                               VALUES (1, 1, 1);`);
-        await connection.run(`INSERT INTO WaitingPosition (id, visitor, queue)
-                              VALUES (2, 2, 1);`);
-        await connection.run(`INSERT INTO WaitingPosition (id, visitor, queue)
-                              VALUES (3, 2, 3);`);
-        await connection.run(`INSERT INTO QueueManager (id, administrator, queue)
-                              VALUES (1, 1, 1);`);
-        await connection.run(`INSERT INTO QueueManager (id, administrator, queue)
+        await connection.run(`INSERT INTO QueueManager (id, administratorId, queueId)
                               VALUES (2, 1, 3);`);
-        await connection.run(`INSERT INTO QueueManager (id, administrator, queue)
+        await connection.run(`INSERT INTO QueueManager (id, administratorId, queueId)
                               VALUES (3, 3, 1);`);
     }
 
     private static async ensureTablesCreated(connection: Database): Promise<void> {
+
         await connection.run(`CREATE TABLE IF NOT EXISTS Administrator
                               (
                                   id           INTEGER NOT NULL primary key,
@@ -93,35 +94,36 @@ export class DB {
                               (
                                   id             INTEGER NOT NULL primary key,
                                   name           TEXT    NOT NULL,
-                                  station        INTEGER NOT NULL,
-                                  CONSTRAINT fk_station FOREIGN KEY (station) REFERENCES Station (id)
+                                  stationId        INTEGER NOT NULL,
+                                  CONSTRAINT fk_station FOREIGN KEY (stationId) REFERENCES Station (id)
                               ) strict`
         );
 
         await connection.run(`CREATE TABLE IF NOT EXISTS QueueManager
                               (
                                   id              INTEGER NOT NULL primary key,
-                                  administrator   INTEGER NOT NULL,
-                                  queue           INTEGER NOT NULL,
-                                  CONSTRAINT fk_administrator FOREIGN KEY (administrator) REFERENCES Administrator (id),
-                                  CONSTRAINT fk_queue FOREIGN KEY (queue) REFERENCES Queue (id)
+                                  administratorId   INTEGER NOT NULL,
+                                  queueId           INTEGER NOT NULL,
+                                  CONSTRAINT fk_administrator FOREIGN KEY (administratorId) REFERENCES Administrator (id),
+                                  CONSTRAINT fk_queue FOREIGN KEY (queueId) REFERENCES Queue (id)
                               ) strict`
         );
 
         await connection.run(`CREATE TABLE IF NOT EXISTS Visitor
                               (
-                                  id           INTEGER NOT NULL primary key,
-                                  joinTime     TEXT    NOT NULL
+                                  id           INTEGER NOT NULL primary key
                               ) strict`
         );
 
         await connection.run(`CREATE TABLE IF NOT EXISTS WaitingPosition
                               (
                                   id           INTEGER NOT NULL primary key,
-                                  visitor      INTEGER NOT NULL,
-                                  queue        INTEGER NOT NULL,
-                                  CONSTRAINT fk_visitor FOREIGN KEY (visitor) REFERENCES Visitor (id),
-                                  CONSTRAINT fk_queue FOREIGN KEY (queue) REFERENCES Queue (id)
+                                  visitorId      INTEGER NOT NULL,
+                                  queueId        INTEGER NOT NULL,
+                                  joinTime      TEXT NOT NULL,
+                                  finished      INTEGER DEFAULT 0,
+                                  CONSTRAINT fk_visitor FOREIGN KEY (visitorId) REFERENCES Visitor (id),
+                                  CONSTRAINT fk_queue FOREIGN KEY (queueId) REFERENCES Queue (id)
                               ) strict`
         );
     }

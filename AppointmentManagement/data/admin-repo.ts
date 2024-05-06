@@ -19,7 +19,7 @@ export class AdminService extends ServiceBase {
     }
 
     public async getQueueByAdminId(id: number): Promise<IStation | null> {
-        const stmt: Statement = await this.unit.prepare('SELECT q.* FROM Queue q JOIN QueueManager qm ON q.id = qm.queue WHERE qm.administrator = ?;', id);
+        const stmt: Statement = await this.unit.prepare('SELECT q.* FROM Queue q JOIN QueueManager qm ON q.id = qm.queueId WHERE qm.administratorId = ?;', id);
         return ServiceBase.nullIfUndefined(await stmt.all<IStation>());
     }
 }

@@ -2,23 +2,33 @@
     id?: number;
     email: string;
     passwort: string;
-    queues: IQueue[];
 }
 
 export interface IQueue {
     id?: number;
     name: string;
-    waitingPersons: IVisitor[];
-    station: IStation;
+    stationId: number;
+}
+
+export interface QueueManager {
+    id?: number;
+    administratorId: number;
+    queueId: number;
 }
 
 export interface IStation {
     id?: number;
     stationName: string;
-    queues: IQueue[];
 }
 
 export interface IVisitor {
     id?: number;
+}
+
+export interface WaitingPosition {
+    id?: number;
+    visitorId: number;
+    queueId: number;
     joinTime: Date;
+    finished: boolean;
 }
