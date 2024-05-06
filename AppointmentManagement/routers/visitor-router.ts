@@ -62,6 +62,42 @@ visitorRouter.get("/queues/:id", async (req, res) => {
     }
 });
 
+visitorRouter.get("/waitingPositions/visitor/:visitorId/queue/:queueId", async (req, res) => {
+    const visitorId = parseInt(req.params.visitorId);
+    const queueId = parseInt(req.params.queueId);
+
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const position: number | null = await service.getVisitorPositionInQueue(visitorId, queueId);
+
+        if (position === null) {
+            res.sendStatus(StatusCodes.NOT_FOUND);
+        } else {
+            res.status(StatusCodes.OK).json(position);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
+visitorRouter.get("/waitingPositions/queued", async (_, res) => {
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const allIds = await service.getAllWaitingPositions();
+        res.status(StatusCodes.OK).json(allIds);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
 visitorRouter.post("/", async (req, res) => {
     const unit: Unit = await Unit.create(false);
 

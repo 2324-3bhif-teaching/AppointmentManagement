@@ -10,7 +10,7 @@ export interface IQueue {
     stationId: number;
 }
 
-export interface QueueManager {
+export interface IQueueManager {
     id?: number;
     administratorId: number;
     queueId: number;
@@ -25,10 +25,10 @@ export interface IVisitor {
     id?: number;
 }
 
-export interface WaitingPosition {
+export interface IWaitingPosition {
     id?: number;
     visitorId: number;
     queueId: number;
     joinTime: Date;
-    finished: boolean;
+    finished: number;
 }

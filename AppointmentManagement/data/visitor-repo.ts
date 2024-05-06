@@ -1,7 +1,7 @@
 import {Statement} from "sqlite";
 import {ServiceBase} from "../src/service-base";
 import {Unit} from "../src/unit";
-import {IQueue, IVisitor} from "../src/model";
+import {IQueue, IVisitor, IWaitingPosition} from "../src/model";
 
 export class VisitorService extends ServiceBase {
     constructor(unit: Unit) {
@@ -13,6 +13,11 @@ export class VisitorService extends ServiceBase {
         return await stmt.all<IVisitor>();
     }
 
+    public async getAllWaitingPositions(): Promise<IWaitingPosition> {
+        const stmt: Statement = await this.unit.prepare('select * from WaitingPosition');
+        return await stmt.all<IWaitingPosition>();
+    }
+
     public async getById(id: number): Promise<IVisitor | null> {
         const stmt: Statement = await this.unit.prepare('select * from Visitor WHERE id = ?', id);
         return ServiceBase.nullIfUndefined(await stmt.get<IVisitor>());
@@ -21,6 +26,22 @@ export class VisitorService extends ServiceBase {
     public async getQueueByVisitorId(id: number): Promise<IQueue | null> {
         const stmt: Statement = await this.unit.prepare('SELECT q.* FROM Queue q JOIN WaitingPosition wp ON q.id = wp.queueId WHERE wp.visitorId = ?;', id);
         return ServiceBase.nullIfUndefined(await stmt.all<IQueue>());
+    }
+
+    public async getVisitorPositionInQueue(visitorId: number, queueId: number): Promise<number | null> {
+        const stmt: Statement = await this.unit.prepare(`
+            SELECT COUNT(*) AS position
+            FROM WaitingPosition
+            WHERE queueId = ?1 AND visitorId != ?2 AND joinTime <= (
+                SELECT joinTime FROM WaitingPosition WHERE visitorId = ?3 AND queueId = ?4)`,
+            {
+                1: queueId,
+                2: visitorId,
+                3: visitorId,
+                4: queueId
+            });
+        return ServiceBase.nullIfUndefined(await stmt.get<number | null>());
+
     }
 
     public async insert(visitor: IVisitor): Promise<boolean> {
