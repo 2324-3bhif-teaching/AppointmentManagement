@@ -59,12 +59,21 @@ export class DB {
                               VALUES (2, 'Roboterführerschein-Matte', 3);`);
         await connection.run(`INSERT INTO Queue (id, name, stationId)
                               VALUES (3, 'VR-Brille', 1);`);
+
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (2, 2, 1, '2024-5-5 19:28:19', 0);`);
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (3, 2, 3, '2024-5-5 19:16:55', 0);`);
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (6, 2, 2, '2024-5-5 17:16:05', 0);`);
+
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (4, 1, 3, '2024-5-5 18:27:04', 0);`);
+        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
+                              VALUES (5, 1, 2, '2024-5-5 19:23:19', 0);`);
         await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
                               VALUES (1, 1, 1, '2024-5-5 19:27:04', 0);`);
-        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
-                              VALUES (2, 2, 1, '2024-5-5 19:28:19', 1);`);
-        await connection.run(`INSERT INTO WaitingPosition (id, visitorId, queueId, joinTime, finished)
-                              VALUES (3, 2, 3, '2024-5-5 19:16:55', 1);`);
+
         await connection.run(`INSERT INTO QueueManager (id, administratorId, queueId)
                               VALUES (1, 1, 1);`);
         await connection.run(`INSERT INTO QueueManager (id, administratorId, queueId)
