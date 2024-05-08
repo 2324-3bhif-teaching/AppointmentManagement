@@ -29,8 +29,7 @@ export class VisitorService extends ServiceBase {
     }
 
     public async getVisitorPositionInQueue(visitorId: number, queueId: number): Promise<number | null> {
-        const stmt: Statement = await this.unit.prepare(`
-            SELECT COUNT(*) AS position
+        const stmt: Statement = await this.unit.prepare(`SELECT COUNT(*) + 1 AS position
             FROM WaitingPosition
             WHERE queueId = ?1 AND visitorId != ?2 AND joinTime <= (
                 SELECT joinTime FROM WaitingPosition WHERE visitorId = ?3 AND queueId = ?4)`,

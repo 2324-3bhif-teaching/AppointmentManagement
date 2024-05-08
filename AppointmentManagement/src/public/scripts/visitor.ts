@@ -42,6 +42,8 @@ async function loadQueues(){
 
 async function setCurrentUser() {
     currentVisitorID = 2;
+    const visitorId = document.getElementById('visitorId')!;
+    visitorId.innerHTML = currentVisitorID.toString().padStart(3, '0');
 }
 
 async function createTableRows(queues: IQueue[], waitingPositions: IWaitingPosition[]): Promise<string> {
@@ -72,7 +74,7 @@ async function deleteQueue(queueId: number, visitorId: number){
 async function getPosition(visitorId: number, queueId: number): Promise<number> {
     try {
         const result = await fetchRestEndpoint(`http://localhost:3000/api/visitor/waitingPositions/visitor/` + visitorId + `/queue/` + queueId, 'GET');
-        return result.position + 1;
+        return result.position;
     } catch (error) {
         console.error('Error:', error);
     }
