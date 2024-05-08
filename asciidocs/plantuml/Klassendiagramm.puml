@@ -1,29 +1,39 @@
 @startuml
+
+class Administrator {
+    - email: String
+    - password: String
+    - queue: List<Queue>
+}
+
+class Station {
+    - stationName: String
+    - ques: List<Queue>
+}
+
+class QueueManager {
+    - queue: Queue
+    - administrator: Administrator
+}
+
 class Queue {
     - waitingPersons: List<Visitor>
 }
 
+class WaitingPosition {
+    - visitor: Visitor
+    - queue: Queue
+}
+
 class Visitor {
-    - code: String
-    - controlSystem: Enum
-    - inQueue: Boolean
+    - id: int
+    - joinTime: DateTime
 }
 
-class Administrator {
-    - password: Hash
-    + addVisitorToQueue(visitor: Visitor)
-    + removeVisitorFromQueue(visitor: Visitor)
-    + skipVisitor()
-}
+Administrator "*" - "*" Queue : > manages
+(Administrator, Queue) .. QueueManager
+Station "1" -- "*" Queue : > has
+Queue "*" - "*" Visitor : > stores
+(Queue, Visitor) .. WaitingPosition
 
-enum controlSystem {
-    controller
-    dance mat
-    sensor
-    steering wheel
-}
-
-Queue "1" -- "*" Visitor : < waits in
-Administrator "1" -- "*" Queue : > manage
-Visitor --> controlSystem
 @enduml
