@@ -55,41 +55,6 @@ Der Besucher kann sich in mehrere Queues einreihen und bekommt eine Benachrichti
 * Wartbarkeit
 ** Das System soll, Wartung- und Reparaturarbeiten in einfacher und schneller Weise durchführen können.
 
-=== MockUp
-
-.Display Ansicht
-[%collapsible]
-====
-image::images/display.png[]
-
-Diese Ansicht wird auf den Bildschirm angezeigt, wenn nur ein Roboter fährt.
-
-Auf der linken Seite werden die Nummern angezeigt, die als Nächstes dran sind.
-====
-
-.Display Ansicht mehrere Roboter
-[%collapsible]
-====
-image::images/display_more.png[]
-
-Diese Ansicht wird auf den Bildschirm angezeigt, wenn mehrere Roboter fahren.
-
-Die Grün markierten Nummern sind die Nummern, die gerade dran sind, die darunter sind die Nummern, die als Nächstes dran sind.
-====
-
-.Hinzufügen einer neuen Nummer
-[%collapsible]
-====
-image::images/add.png[]
-In dem ID-Feld wird die Nummer von dem Zettel eingegeben.
-
-Bei dem Getriebeartfeld wird die Getriebeart ausgewählt, die derzeit zur Verfügung sind z.B. Matte oder Joystick und worauf gefahren werden soll.
-
-Beim Betätigen der "Hinzufügen-"Taste wird die Nummer in die Warteschlange hinzugefügt.
-
-Es wird auch eine Bestätigung angezeigt, dass die Nummer hinzugefügt wurde, andererseits wird eine Fehlermeldung angezeigt, in welcher Aufgefordert wird zu der Stadtion zu gehen und sich zu melden.
-====
-
 == Diagramme
 
 .Use-case Diagramm

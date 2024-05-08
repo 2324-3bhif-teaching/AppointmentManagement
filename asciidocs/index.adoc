@@ -20,3 +20,6 @@ https://2324-3bhif-teaching.github.io/AppointmentManagement/Pflichtenheft[Pflich
 
 == Arbeitsstunden
 https://2324-3bhif-teaching.github.io/AppointmentManagement/Arbeitsstunden[Arbeitsstunden]
+
+== Mockups
+https://2324-3bhif-teaching.github.io/AppointmentManagement/Mockups[Mockups]
