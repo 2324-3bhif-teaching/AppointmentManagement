@@ -6,7 +6,7 @@
 
 Version: 1.0
 
-Version Date: 24-04-2024
+Version Date: 09-05-2024
 
 Authors:
 
@@ -19,12 +19,12 @@ Am Tag der offenen Türe gibt es die Möglichkeiten bei verschiedenen Stationen 
 
 == Ist-Zustand
 
-Derzeit ist eine lange Wartezeit beim Absolvieren der verschiedenen Aktivitäten.
+Zurzeit wird kein System zur Verwaltung von Warteschlangen, am "Tag der offenen Tür" verwendet.
 
 == Problemstellung
 
-Die Besucher kommen derzeit in Gruppen zu der Stadtion dadurch ist die Station häufig ausgelastet, jedoch gibt es auch
-das Gegenteil im welchen fall sich niemand anstellt.
+In der aktuellen Situation kommen Besucher in Gruppen zur Station, was oft zu Überlastung führt. Jedoch gibt es auch
+Zeiten, in denen sich niemand anstellt, was das Gegenteil darstellt.
 
 == Aufgabenstellung
 
@@ -66,6 +66,15 @@ include::plantuml/Usecasediagramm.puml[]
 ----
 ====
 
+.Aktivitätsdiagramm
+[%collapsible]
+====
+[plantuml, Aktivitaetsdiagramm, png]
+----
+include::plantuml/Aktivitaetsdiagramm.puml[]
+----
+====
+
 .Klassen Diagramm
 [%collapsible]
 ====
@@ -83,7 +92,7 @@ Die Wartezeit für die Besucher sollen minimiert werden und für eine bessere Be
 
 Programmiersprache: Typescript
 Datenbank: Sqlite
-Keycloack
+Keycloak
 
 == Administratives
 

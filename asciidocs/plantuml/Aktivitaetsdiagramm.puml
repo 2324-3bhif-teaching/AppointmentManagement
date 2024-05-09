@@ -1,0 +1,27 @@
+@startuml
+
+start
+while (Visitor wants to visit Stations) is (true)
+
+    :Visitor arrives at station;
+
+    if(Visitor wants to try activity) then (true)
+        :Visitor scans QR code;
+        :Visitor added to queue;
+
+        while (Visitor receives notification) is (false)
+            :Visitor explores other stations;
+            :Visitor scans QR code;
+        endwhile (true)
+
+        :Visitor completes activity;
+        :Visitor leaves station;
+
+    else (no)
+    endif
+
+    :Visitor informs about station;
+
+endwhile (false)
+end
+@enduml

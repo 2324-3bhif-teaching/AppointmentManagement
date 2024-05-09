@@ -24,13 +24,7 @@
 
 Beschreibung der Projektphasen und deren überprüfbarer Zwischenergebnisse.
 
-|===
-| Phase | Meilenstein / Ergebnis | Soll-Termin | Freigabe
-
-| Initiierung | Projektdokumente sind vollständig | 06.03.2024 | -
-| Durchführung | Anlegen neuer Stadtionen & Queues | 30.04.2024 | -
-| Durchführung | Anmelden mithilfe der Keycloack | 8.05.2024 | -
-|===
+Hier finden Sie unsere https://github.com/2324-3bhif-teaching/AppointmentManagement/milestones[Meilensteine]
 
 == Projektdaten
 
