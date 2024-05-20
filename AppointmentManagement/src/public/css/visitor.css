@@ -47,3 +47,9 @@ div::before {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
 }
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 70px;
+}

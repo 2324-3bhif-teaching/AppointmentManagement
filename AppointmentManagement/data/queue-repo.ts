@@ -19,7 +19,7 @@ export class QueueService extends ServiceBase {
     }
 
     public async getStationByQueueId(id: number): Promise<IStation | null> {
-        const stmt: Statement = await this.unit.prepare('SELECT s.* FROM Station s JOIN Queue q ON s.id = q.station WHERE q.id = ?;', id);
+        const stmt: Statement = await this.unit.prepare('SELECT s.* FROM Station s JOIN Queue q ON s.id = q.stationId WHERE q.id = ?;', id);
         return ServiceBase.nullIfUndefined(await stmt.all<IStation>());
     }
 }
