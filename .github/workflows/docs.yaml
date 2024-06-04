@@ -23,6 +23,8 @@ jobs:
       - name: run docker
         run: |
           cd ${{ env.INPUTPATH }}/scripts
+          ls
+          chmod +x docker-convert.sh 
           sudo ./docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
