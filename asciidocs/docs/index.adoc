@@ -1,0 +1,28 @@
+= Dokumentation Appointment Management
+:toc: left
+:sectnums:
+:toclevels: 1
+:table-caption:
+:linkattrs:
+
+----
+Kontakt: f.stroschneider@students.htl-leonding.ac.at
+----
+
+== Projektidee
+https://2324-3bhif-teaching.github.io/AppointmentManagement/docs/Projektidee[Projektidee]
+
+== Projektauftrag
+https://2324-3bhif-teaching.github.io/AppointmentManagement/docs/Projektauftrag[Projektauftrag]
+
+== Pflichtenheft
+https://2324-3bhif-teaching.github.io/AppointmentManagement/docs/Pflichtenheft[Pflichtenheft]
+
+== Arbeitsstunden
+https://2324-3bhif-teaching.github.io/AppointmentManagement/docs/Arbeitsstunden[Arbeitsstunden]
+
+== Mockups
+https://2324-3bhif-teaching.github.io/AppointmentManagement/docs/Mockups.pdf[Mockups]
+
+== Slides
+RevealJs Slides can be found https://2324-3bhif-teaching.github.io/AppointmentManagement/slides[here^]

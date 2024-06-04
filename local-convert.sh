@@ -22,7 +22,7 @@ then
   rm -rf $outputDir
   mkdir $outputDir
   echo "copying '$inputDir' to '$outputDir'"
-  cp -r -v $inputDir/ $outputDir
+  cp -r -v $inputDir/. $outputDir
   pwd
   ./$outputDir/scripts/docker-convert.sh $outputDir $convertSlides
 else
