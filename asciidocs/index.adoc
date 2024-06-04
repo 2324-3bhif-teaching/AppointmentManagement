@@ -23,3 +23,6 @@ https://2324-3bhif-teaching.github.io/AppointmentManagement/Arbeitsstunden[Arbei
 
 == Mockups
 https://2324-3bhif-teaching.github.io/AppointmentManagement/Mockups.pdf[Mockups]
+
+== Slides
+RevealJs Slides can be found https://2324-3bhif-teaching.github.io/AppointmentManagement/slides[here^]
