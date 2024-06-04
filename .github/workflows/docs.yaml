@@ -22,11 +22,10 @@ jobs:
 
       - name: run docker
         run: |
-          cd ${{ env.INPUTPATH }}/scripts
           ls
-          chmod +x docker-convert.sh 
-          chmod +x docker-convert-util.sh
-          sudo ./docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
+          chmod +x ${{ env.INPUTPATH }}/scripts/docker-convert.sh 
+          chmod +x ${{ env.INPUTPATH }}/scripts/docker-convert-util.sh
+          sudo ${{ env.INPUTPATH }}/scripts/docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
       - name: Deploy to GitHub Pages
