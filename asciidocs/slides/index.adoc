@@ -42,7 +42,7 @@
 * Benachrichtigung der nächsten wartenden
 
 [.font-xx-large]
-=== [.margin-b-10]#Terminologie#
+=== [.margin-b-10]#Technologie#
 * *Backend*: Typescript
 * *Datenbank*: SQLITE
 * *Frontend*: HTML & CSS
