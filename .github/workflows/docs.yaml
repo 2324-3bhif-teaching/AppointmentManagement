@@ -22,8 +22,8 @@ jobs:
 
       - name: run docker
         run: |
-          sudo ls asciidocs
-          sudo ${{ env.INPUTPATH }}/scripts/docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
+          cd ${{ env.INPUTPATH }}/scripts
+          sudo ./docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
       - name: Deploy to GitHub Pages
