@@ -1,0 +1,23 @@
+= Arbeitsstunden
+
+[cols="1, 1, 4, 1", options="header"]
+|===
+| *Datum* | *Dauer (Minuten)* | *Beschreibung* | *Issue Nummer*
+|  |  |  |
+| 28.02.2024 | 158 | Erstellung der Projektidee, Projektauftrags & Pflichtenheft |
+| 01.03.2024 | 73 | Zeichnen der Mockups |
+| 06.03.2024 | 23 | Erstellen des Usecase-Diagramms |
+| 10.04.2024 | 31 | Erstellen eines Klassen-Diagramms | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/1[#1]
+| 11.04.2024 | 46 | Issues anlegen |
+| 13.04.2024 | 23 | Hinzufügen der gh-actions | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/8[#8]
+| 13.04.2024 | 87 | Implementieren der Projektstruktur | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/2[#2]
+| 17.04.2024 | 5 | Fix gh-actions | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/9[#9]
+| 23.04.2024 | 106 | Aufsetzen der Datenbank struktur | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/3[#3]
+| 24.04.2024 | 53 | Überarbeiten der Projektfiles | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/11[#11]
+| 03.05.2024 | 123 | Implementierung des Klassendiagramms | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/4[#4]
+| 03.05.2024 | 47 | Generierung von statischer Website | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/6[#6]
+| 04.05.2024 | 178 | Implementierung des Frontends | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/7[#7]
+| 08.05.2024 | 23 | Hinzufügen der Docker Action | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/12[#12]
+|  |  |  |
+|  | 976 |  |
+|===

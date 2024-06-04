@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Administrator" as admin
+actor "Visitor" as vi
+
+rectangle "Appointment Management" {
+  usecase "Create a Station" as UC1
+  usecase "Create Queue(s) for the station(s)" as UC2
+  usecase "Skip ahead in the queue(s)" as UC3
+  usecase "Join Queue(s)" as UC4
+}
+
+admin -- UC1
+admin -- UC2
+admin -- UC3
+vi -- UC4
+@enduml

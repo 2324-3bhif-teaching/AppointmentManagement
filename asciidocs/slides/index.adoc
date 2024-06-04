@@ -1,0 +1,53 @@
+:revealjs_theme: white
+:customcss: css/presentation.css
+
+[.title]
+= Appointment Management
+
+[pass]
+++++
+<script>
+    let header = document.getElementsByClassName("title")[0];
+    header.innerHTML = "<h1><span class=\"highlight\">Appointment</span><span class=\"bigFont\"> Management</span></h1>"
+</script>
+++++
+
+[.font-xx-large]
+== Team
+* Fabian Stroschneider
+* Antonio Ignac
+
+[.font-xx-large]
+== Was ist Appointment Management?
+* Digitales Warteschlangensystem
+** "Tag der offenen Türe"
+
+=== Warum?
+* Ermöglicht einen warte freien "Tag der offenen Türe"
+* Besonders warten an den Stationen
+** z.B. Roboterführerschein, VR-Brille, ...
+
+=== Wie?
+* QR-Code der Station scannen
+** Automatisch in die Warteschlange eingereiht
+*** FIFO
+* Durch Notifikationen benachrichtigt
+** Wird gebeten sich zur Station zu begeben
+
+=== Funktionen
+* Einreihen per QR-code Scan
+** auch in mehrere Warteschlangen gleichzeitig
+*** anzeigen der aktuellen Positionen
+*** verlassenen der einzelnen Schlangen
+* Benachrichtigung der nächsten wartenden
+
+[.font-xx-large]
+=== [.margin-b-10]#Technologie#
+* *Backend*: Typescript
+* *Datenbank*: SQLITE
+* *Frontend*: HTML & CSS
+* *Weitere*:
+** Docker
+** Keycloak
+
+== Live Demo

@@ -1,0 +1,101 @@
+= Pflichtenheft Terminverwaltung
+:toc: left
+:sectnums:
+:toclevels: 1
+:table-caption:
+
+Version: 1.0
+
+Version Date: 09-05-2024
+
+Authors:
+
+* f.stroschneider@students.htl-leonding.ac.at
+* a.ignac@students.htl-leonding.ac.at
+
+== Beschreibung der Ausgangslage
+
+Am Tag der offenen Türe gibt es die Möglichkeiten bei verschiedenen Stationen eine Aktivität auszuprobieren.
+
+== Ist-Zustand
+
+Zurzeit wird kein System zur Verwaltung von Warteschlangen, am "Tag der offenen Tür" verwendet.
+
+== Problemstellung
+
+In der aktuellen Situation kommen Besucher in Gruppen zur Station, was oft zu Überlastung führt. Jedoch gibt es auch
+Zeiten, in denen sich niemand anstellt, was das Gegenteil darstellt.
+
+== Aufgabenstellung
+
+=== Funktionale Anforderungen
+
+Es soll möglich sein mithilfe einer QR-Scanner-App einen QR-Code einer Stadtion zu scannen und sich somit in die Queue
+einzureihen.
+
+Der Besucher kann sich in mehrere Queues einreihen und bekommt eine Benachrichtigung, wenn er an der Reihe ist.
+
+=== Nicht-funktionale Anforderungen
+
+* Sicherheitsanforderung
+** Die Daten sollen vor Dritten geschützt werden.
+
+* Zuverlässigkeit
+** Das System soll, in einer vorhersehbaren und zuverlässigen Weise zu funktionieren.
+
+* Benutzbarkeit
+** Das System soll, so gestaltet werden, dass es einfach und intuitiv von Benutzern verwendet werden kann.
+
+* Effizienz
+** Das System soll die Ressourcen effizient nutzen.
+
+* Übertragbarkeit
+** Das System soll, auf andere Systeme oder Umgebungen übertragen werden können.
+
+* Wartbarkeit
+** Das System soll, Wartung- und Reparaturarbeiten in einfacher und schneller Weise durchführen können.
+
+== Diagramme
+
+.Use-case Diagramm
+[%collapsible]
+====
+[plantuml, Usecasediagramm, png]
+----
+include::plantuml/Usecasediagramm.puml[]
+----
+====
+
+.Aktivitätsdiagramm
+[%collapsible]
+====
+[plantuml, Aktivitaetsdiagramm, png]
+----
+include::plantuml/Aktivitaetsdiagramm.puml[]
+----
+====
+
+.Klassen Diagramm
+[%collapsible]
+====
+[plantuml, Klassendiagramm, png]
+----
+include::plantuml/Klassendiagramm.puml[]
+----
+====
+
+== Zielsetzung
+
+Die Wartezeit für die Besucher sollen minimiert werden und für eine bessere Besucherauslastung der Station sorgen.
+
+== Rahmenbedingungen
+
+Programmiersprache: Typescript
+Datenbank: Sqlite
+Keycloak
+
+== Administratives
+
+----
+Team: Stroschneider Fabian & Ignac Antonio
+----

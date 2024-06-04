@@ -1,0 +1,39 @@
+@startuml
+
+class Administrator {
+    - email: String
+    - password: String
+    - queue: List<Queue>
+}
+
+class Station {
+    - stationName: String
+    - ques: List<Queue>
+}
+
+class QueueManager {
+    - queue: Queue
+    - administrator: Administrator
+}
+
+class Queue {
+    - waitingPersons: List<Visitor>
+}
+
+class WaitingPosition {
+    - visitor: Visitor
+    - queue: Queue
+}
+
+class Visitor {
+    - id: int
+    - joinTime: DateTime
+}
+
+Administrator "*" - "*" Queue : > manages
+(Administrator, Queue) .. QueueManager
+Station "1" -- "*" Queue : > has
+Queue "*" - "*" Visitor : > stores
+(Queue, Visitor) .. WaitingPosition
+
+@enduml
