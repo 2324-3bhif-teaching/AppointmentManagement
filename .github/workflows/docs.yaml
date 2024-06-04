@@ -22,7 +22,7 @@ jobs:
 
       - name: run docker
         run: |
-          ls
+          sudo ls asciidocs
           sudo ${{ env.INPUTPATH }}/scripts/docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
