@@ -23,7 +23,9 @@ jobs:
       - name: run docker
         run: |
           sudo ${{ env.INPUTPATH }}/scripts/docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
-                tree
+          tree
+
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           branch: ${{ env.BRANCH }}
