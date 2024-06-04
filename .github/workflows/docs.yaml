@@ -22,6 +22,7 @@ jobs:
 
       - name: run docker
         run: |
+          ls
           sudo ${{ env.INPUTPATH }}/scripts/docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
