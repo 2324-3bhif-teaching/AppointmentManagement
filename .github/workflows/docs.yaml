@@ -25,6 +25,7 @@ jobs:
           cd ${{ env.INPUTPATH }}/scripts
           ls
           chmod +x docker-convert.sh 
+          chmod +x docker-convert-util.sh
           sudo ./docker-convert.sh ${{ env.INPUTPATH }} ${{ env.SLIDES }}
           tree
 
