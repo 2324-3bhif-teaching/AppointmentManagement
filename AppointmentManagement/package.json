@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "server-dev": "npx nodemon app.ts",
+    "client-dev": "npx tsc --watch --project ./src/public",
     "start": "tsx src/app.ts"
   },
   "author": "stroschneider.fabian",
