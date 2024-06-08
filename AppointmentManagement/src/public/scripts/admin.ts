@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.addEventListener("DOMContentLoaded", () => {
         const logoutButton = document.getElementById("logout");
         logoutButton?.addEventListener("click",  () => {
-            if (keycloak.authenticated) {
                 keycloak.logout();
-            }
         });
     });
 });

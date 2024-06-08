@@ -81,3 +81,4 @@ async function getPosition(visitorId: number, queueId: number): Promise<number> 
     return 0;
 }
 (window as any).loadQueues = loadQueues;
+(window as any).deleteQueue = deleteQueue;
