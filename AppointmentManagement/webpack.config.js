@@ -4,7 +4,8 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 module.exports = {
     entry: {
         admin: './src/public/scripts/admin.ts',
-        visitor: './src/public/scripts/visitor.ts'
+        visitor: './src/public/scripts/visitor.ts',
+        index: './src/public/scripts/index.ts'
     },
     output: {
         filename: "[name].bundle.js",
