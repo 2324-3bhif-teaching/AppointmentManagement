@@ -13,7 +13,7 @@ coverage/
 *.db
 !jest.config.js
 !webpack.config.js
-!/dist/*.js
+!bundle.js
 package-lock.json
 
 # User-specific stuff
