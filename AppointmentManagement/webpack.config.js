@@ -2,9 +2,12 @@ const path = require('path');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
-    entry: './src/public/scripts/admin.ts',
+    entry: {
+        admin: './src/public/scripts/admin.ts',
+        visitor: './src/public/scripts/visitor.ts'
+    },
     output: {
-        filename: 'bundle.js',
+        filename: "[name].bundle.js",
         path: path.resolve(__dirname, 'src/public/scripts/dist')
     },
     resolve: {
