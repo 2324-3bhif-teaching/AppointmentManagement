@@ -5,7 +5,7 @@
     "server-dev": "npx nodemon app.ts",
     "client-dev": "npx tsc --watch --project ./src/public",
     "start": "tsx src/app.ts",
-    "build": "npx webpack --mode=production --config webpack.config.js"
+    "build": "npx webpack --watch --mode=development"
   },
   "author": "stroschneider.fabian",
   "license": "MIT",

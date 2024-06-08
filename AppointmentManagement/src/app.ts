@@ -33,10 +33,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(join(__dirname, "/public")));
 
-app.use("/api/admin",keycloak.protect(), adminRouter);
-app.use("/api/queue",keycloak.protect(), queueRouter);
-app.use("/api/station",keycloak.protect(), stationRouter);
-app.use("/api/visitor",keycloak.protect(), visitorRouter);
+app.use("/api/admin", adminRouter);
+app.use("/api/queue", queueRouter);
+app.use("/api/station", stationRouter);
+app.use("/api/visitor", visitorRouter);
 
 const port = 3000;
 app.listen(port, async () => {

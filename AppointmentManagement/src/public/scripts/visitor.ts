@@ -80,3 +80,4 @@ async function getPosition(visitorId: number, queueId: number): Promise<number> 
     }
     return 0;
 }
+(window as any).loadQueues = loadQueues;
