@@ -1,5 +1,5 @@
-kubectl delete -n student-f-stroschneider deployment appointmentManagement
-kubectl delete -n student-f-stroschneider service appointmentManagement-svc
-kubectl delete -n student-f-stroschneider ingress appointmentManagement-ingress
-kubectl delete -n student-f-stroschneider pod -l app=appointmentManagement
-kubectl create -f leocloud-deploy-V2.yaml
+kubectl.exe delete -n student-a-ignac deployment appointmentManagement
+kubectl.exe delete -n student-a-ignac service appointmentManagement-svc
+kubectl.exe delete -n student-a-ignac ingress appointmentManagement-ingress
+kubectl.exe delete -n student-a-ignac pod -l app=appointmentManagement
+kubectl.exe create -f leocloud-deploy-V2.yaml
