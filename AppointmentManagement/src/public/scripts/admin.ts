@@ -1,4 +1,4 @@
-import {initKeycloak, keycloak} from "./keycloak";
+import {initKeycloak} from "./keycloak";
 
 
 const auth = initKeycloak();
@@ -8,11 +8,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!authenticated) {
         location.href = "index.html";
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const logoutButton = document.getElementById("logout");
-        logoutButton?.addEventListener("click",  () => {
-                keycloak.logout();
-        });
-    });
 });
