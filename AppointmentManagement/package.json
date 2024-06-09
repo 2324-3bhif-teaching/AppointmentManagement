@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "server-dev": "npx nodemon app.ts",
-    "start": "tsx src/app.ts"
+    "client-dev": "npx tsc --watch --project ./src/public",
+    "start": "tsx src/app.ts",
+    "build": "npx webpack --watch --mode=development"
   },
   "author": "stroschneider.fabian",
   "license": "MIT",
@@ -18,7 +20,8 @@
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
-    "keycloak-connect": "^24.0.3"
+    "keycloak-connect": "^24.0.3",
+    "keycloak-js": "^24.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -26,14 +29,24 @@
     "@types/express-session": "^1.18.0",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.15",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint-import-resolver-webpack": "^0.13.8",
     "nodemon": "^2.0.15",
     "ts-node": "^10.5.0",
     "eslint": "^8.56.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
     "tsx": "^4.7.0",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
-    "typescript-eslint": "^7.0.2"
+    "typescript-eslint": "^7.0.2",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "node-polyfill-webpack-plugin": "^2.0.0",
+    "crypto-browserify": "^3.12.0",
+    "stream-browserify": "^3.0.0",
+    "buffer": "^6.0.3"
   },
   "nodemonConfig": {
     "ignore": [

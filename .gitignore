@@ -9,9 +9,11 @@
 .vscode/
 .idea/
 coverage/
+**/dist/
 *.js
 *.db
 !jest.config.js
+!webpack.config.js
 package-lock.json
 
 # User-specific stuff
