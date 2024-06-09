@@ -44,13 +44,17 @@ export class VisitorService extends ServiceBase {
     }
 
     public async insert(visitor: IVisitor): Promise<boolean> {
-        const stmt = await this.unit.prepare('insert into Visitor (id) values (?1)',
-            {
-                1: visitor.id,
-            }
-        );
+        const result = await this.getById(visitor.id!);
+        if (result === null) {
+            const stmt = await this.unit.prepare('insert into Visitor (id) values (?1)',
+                {
+                    1: visitor.id,
+                }
+            );
 
-        return await this.executeStmt(stmt);
+            return await this.executeStmt(stmt);
+        }
+        return false;
     }
 
     public async deleteQueueByVisitorId(queueId: number, visitorId: number): Promise<boolean> {

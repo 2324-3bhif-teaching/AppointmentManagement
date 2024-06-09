@@ -24,6 +24,9 @@ async function fetchRestEndpoint(
 }
 
 async function loadQueues(){
+    if(!document.cookie.includes('visitor')) {
+        window.location.href = '/login.html';
+    }
     try {
         await setCurrentUser();
         const queues = await fetchRestEndpoint("http://localhost:3000/api/visitor/queues/" + currentVisitorID, 'GET');
@@ -40,8 +43,32 @@ async function loadQueues(){
     }
 }
 
+async function getCookie(cname: string): Promise<number> {
+    let cookieName = cname + "=";
+    let decodedCookieString = decodeURIComponent(document.cookie);
+    let cookieArray = decodedCookieString.split(';');
+    for(let i = 0; i < cookieArray.length; i++) {
+        let currentCookie = cookieArray[i];
+        while (currentCookie.charAt(0) == ' ') {
+            currentCookie = currentCookie.substring(1);
+        }
+        if (currentCookie.indexOf(cookieName) == 0) {
+            return Number(currentCookie.substring(cookieName.length, currentCookie.length));
+        }
+    }
+    return 0;
+}
+
+function clearCookies() {
+    const allCookies = document.cookie.split(';');
+
+    for (let i = 0; i < allCookies.length; i++) {
+        document.cookie = allCookies[i] + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+}
+
 async function setCurrentUser() {
-    currentVisitorID = 2;
+    currentVisitorID = await getCookie("visitor");
     const visitorId = document.getElementById('visitorId')!;
     visitorId.innerHTML = currentVisitorID.toString().padStart(3, '0');
 }
@@ -82,3 +109,4 @@ async function getPosition(visitorId: number, queueId: number): Promise<number> 
 }
 (window as any).loadQueues = loadQueues;
 (window as any).deleteQueue = deleteQueue;
+(window as any).clearCookies = clearCookies;

@@ -1,0 +1,23 @@
+section {
+    min-height: 100vh;
+}
+.gradient-form {
+    background-color: #eee;
+}
+.gradient-custom-2 {
+    background: linear-gradient(to right, #dc3545, #ff7f50);
+}
+.text-black {
+    color: #000000;
+}
+.text-white {
+    color: #ffffff;
+}
+.btnInactive{
+    background: linear-gradient(to right, rgba(220, 53, 69, 0.57), rgba(255, 127, 80, 0.57));
+    color: gray;
+}
+.noDisplay {
+    display: none;
+}
+

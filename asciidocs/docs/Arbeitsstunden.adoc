@@ -19,6 +19,8 @@
 | 04.05.2024 | 178 | Implementierung des Frontends | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/7[#7]
 | 08.05.2024 | 23 | Hinzufügen der Docker Action | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/12[#12]
 | 04.06.2024 | 78 | Fixen der GH-Actions |
+| 08.06.2024 | 36 | Implementieren der Keycloak| https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/13[#13]
+| 09.06.2024 | 51 | Login für die Besucher | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/22[#22]
 |  |  |  |
-|  | 976 |  |
+|  | 1.141 |  |
 |===

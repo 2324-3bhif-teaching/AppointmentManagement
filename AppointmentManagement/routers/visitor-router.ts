@@ -98,14 +98,14 @@ visitorRouter.get("/waitingPositions/queued", async (_, res) => {
     }
 });
 
-visitorRouter.post("/", async (req, res) => {
+visitorRouter.post("/:id", async (req, res) => {
     const unit: Unit = await Unit.create(false);
 
     try {
         const service: VisitorService = new VisitorService(unit);
 
         const visitor: IVisitor = {
-            id: req.body.id,
+            id: Number(req.params.id),
         };
 
         const success = await service.insert(visitor);
