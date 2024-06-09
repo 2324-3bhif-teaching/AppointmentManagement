@@ -1,5 +1,3 @@
-import {StatusCodes} from "http-status-codes";
-
 async function fetchRestEndpoint(
     route: string,
     method: "GET" | "POST" | "PUT" | "DELETE",
@@ -21,6 +19,10 @@ async function fetchRestEndpoint(
     }
 }
 
+if(document.cookie.includes('visitor')) {
+    window.location.href = '/visitor.html';
+}
+
 const loginButton = document.getElementById('loginBtn') as HTMLButtonElement;
 
 loginButton.addEventListener('click', async () => {
@@ -29,6 +31,7 @@ loginButton.addEventListener('click', async () => {
     try {
         if (await validCode(codeField)) {
             await fetchRestEndpoint(`http://localhost:3000/api/visitor/${codeField}`, 'POST');
+            document.cookie = `visitor=${codeField}`;
             window.location.href = '/visitor.html';
 
         } else {
@@ -41,7 +44,7 @@ loginButton.addEventListener('click', async () => {
 });
 
 async function validCode(code: string): Promise<boolean> {
-    const regex = /^[0-9]{4}$/;
+    const regex = /^[0-9]{3}$/;
     return regex.test(code);
 }
 
