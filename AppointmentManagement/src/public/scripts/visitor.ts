@@ -24,6 +24,9 @@ async function fetchRestEndpoint(
 }
 
 async function loadQueues(){
+    if(!document.cookie.includes('visitor')) {
+        window.location.href = '/login.html';
+    }
     try {
         await setCurrentUser();
         const queues = await fetchRestEndpoint("http://localhost:3000/api/visitor/queues/" + currentVisitorID, 'GET');
