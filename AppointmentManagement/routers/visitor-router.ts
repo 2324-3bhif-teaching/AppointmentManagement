@@ -125,6 +125,31 @@ visitorRouter.post("/:id", async (req, res) => {
     }
 });
 
+visitorRouter.post("/queues/:queueId/visitor/:visitorId", async (req, res) => {
+    const unit: Unit = await Unit.create(false);
+
+    try {
+        const service: VisitorService = new VisitorService(unit);
+
+        const visitorId: number = Number(req.params.visitorId);
+        const queueId: number = Number(req.params.queueId);
+
+        const success = await service.insertWaitingPosition(queueId, visitorId);
+
+        if (success) {
+            await unit.complete(true);
+            res.status(StatusCodes.CREATED).send(true);
+        } else {
+            await unit.complete(false);
+            res.status(StatusCodes.NOT_FOUND).send(false);
+        }
+    } catch (error) {
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
 visitorRouter.delete("/queues/:queueId/visitor/:visitorId", async (req, res) => {
     const queueId = parseInt(req.params.queueId);
     const visitorId = parseInt(req.params.visitorId);

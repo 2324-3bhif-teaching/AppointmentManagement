@@ -31,7 +31,7 @@ stationRouter.get("/:id", async (req, res) => {
         if (station === null) {
             res.sendStatus(StatusCodes.NOT_FOUND);
         } else {
-            res.status(StatusCodes.OK).json(station);
+            res.status(StatusCodes.OK).redirect(`http://localhost:3000/station.html?id=${id}`);
         }
     } catch (error) {
         console.log(error);
