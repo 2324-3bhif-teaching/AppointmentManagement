@@ -1,4 +1,4 @@
-import {IQueue, IWaitingPosition} from "../../model";
+import {IQueue, IWaitingPosition} from "../../src/model";
 
 let currentVisitorID: number;
 

@@ -1,7 +1,7 @@
 import {Statement} from "sqlite";
-import {ServiceBase} from "../src/service-base";
-import {Unit} from "../src/unit";
-import {IStation} from "../src/model";
+import {ServiceBase} from "../service-base";
+import {Unit} from "../unit";
+import {IStation} from "../model";
 
 export class StationService extends ServiceBase {
     constructor(unit: Unit) {

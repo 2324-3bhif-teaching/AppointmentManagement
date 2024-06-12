@@ -1,8 +1,8 @@
 import express from "express";
-import {Unit} from "../src/unit";
+import {Unit} from "../unit";
 import {StatusCodes} from "http-status-codes";
-import {StationService} from "../data/station-repo";
-import {IStation} from "../src/model";
+import {StationService} from "../services/station-repo";
+import {IStation} from "../model";
 
 export const stationRouter = express.Router();
 

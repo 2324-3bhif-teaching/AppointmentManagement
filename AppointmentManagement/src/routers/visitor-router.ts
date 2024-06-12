@@ -1,8 +1,8 @@
 import express from "express";
-import {Unit} from "../src/unit";
+import {Unit} from "../unit";
 import {StatusCodes} from "http-status-codes";
-import {VisitorService} from "../data/visitor-repo";
-import {IQueue, IVisitor} from "../src/model";
+import {VisitorService} from "../services/visitor-repo";
+import {IQueue, IVisitor} from "../model";
 
 export const visitorRouter = express.Router();
 

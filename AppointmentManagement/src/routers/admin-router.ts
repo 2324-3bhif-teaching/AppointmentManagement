@@ -1,16 +1,16 @@
 import express from "express";
-import {Unit} from "../src/unit";
+import {Unit} from "../unit";
 import {StatusCodes} from "http-status-codes";
-import {QueueService} from "../data/queue-repo";
-import {IQueue, IStation} from "../src/model";
+import {AdminService} from "../services/admin-repo";
+import {IAdministrator, IStation} from "../model";
 
-export const queueRouter = express.Router();
+export const adminRouter = express.Router();
 
-queueRouter.get("/", async (_, res) => {
+adminRouter.get("/", async (_, res) => {
     const unit: Unit = await Unit.create(true);
     try {
-        const service: QueueService = new QueueService(unit);
-        const allIds: IQueue = await service.getAll();
+        const service: AdminService = new AdminService(unit);
+        const allIds = await service.getAll();
         res.status(StatusCodes.OK).json(allIds);
     } catch (error) {
         console.log(error);
@@ -20,18 +20,18 @@ queueRouter.get("/", async (_, res) => {
     }
 });
 
-queueRouter.get("/:id", async (req, res) => {
+adminRouter.get("/:id", async (req, res) => {
     const id = parseInt(req.params.id);
 
     const unit: Unit = await Unit.create(true);
     try {
-        const service: QueueService = new QueueService(unit);
-        const queue: IQueue | null = await service.getById(id);
+        const service: AdminService = new AdminService(unit);
+        const administrator: IAdministrator | null = await service.getById(id);
 
-        if (queue === null) {
+        if (administrator === null) {
             res.sendStatus(StatusCodes.NOT_FOUND);
         } else {
-            res.status(StatusCodes.OK).json(queue);
+            res.status(StatusCodes.OK).json(administrator);
         }
     } catch (error) {
         console.log(error);
@@ -41,18 +41,18 @@ queueRouter.get("/:id", async (req, res) => {
     }
 });
 
-queueRouter.get("/stations/:id", async (req, res) => {
+adminRouter.get("/queues/:id", async (req, res) => {
     const id = parseInt(req.params.id);
 
     const unit: Unit = await Unit.create(true);
     try {
-        const service: QueueService = new QueueService(unit);
-        const stations: IStation | null = await service.getStationByQueueId(id);
+        const service: AdminService = new AdminService(unit);
+        const queues: IStation | null = await service.getQueueByAdminId(id);
 
-        if (stations === null) {
+        if (queues === null) {
             res.sendStatus(StatusCodes.NOT_FOUND);
         } else {
-            res.status(StatusCodes.OK).json(stations);
+            res.status(StatusCodes.OK).json(queues);
         }
     } catch (error) {
         console.log(error);
