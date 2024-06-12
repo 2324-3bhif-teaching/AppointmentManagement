@@ -98,6 +98,20 @@ visitorRouter.get("/waitingPositions/queued", async (_, res) => {
     }
 });
 
+visitorRouter.get("/queues/:queueId/visitor/:visitorId", async (req, res) => {
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const isQueued = await service.isVisitorInQueue(parseInt(req.params.visitorId), parseInt(req.params.queueId));
+        res.status(StatusCodes.OK).json(isQueued);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
 visitorRouter.post("/:id", async (req, res) => {
     const unit: Unit = await Unit.create(false);
 
@@ -119,6 +133,31 @@ visitorRouter.post("/:id", async (req, res) => {
         }
     } catch (error) {
         console.error('Error in POST /visitor:', error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
+visitorRouter.post("/queues/:queueId/visitor/:visitorId", async (req, res) => {
+    const unit: Unit = await Unit.create(false);
+
+    try {
+        const service: VisitorService = new VisitorService(unit);
+
+        const visitorId: number = Number(req.params.visitorId);
+        const queueId: number = Number(req.params.queueId);
+
+        const success = await service.insertWaitingPosition(queueId, visitorId);
+
+        if (success) {
+            await unit.complete(true);
+            res.status(StatusCodes.CREATED).send(true);
+        } else {
+            await unit.complete(false);
+            res.status(StatusCodes.CONFLICT).send(false);
+        }
+    } catch (error) {
         res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
     } finally {
         await unit.complete();

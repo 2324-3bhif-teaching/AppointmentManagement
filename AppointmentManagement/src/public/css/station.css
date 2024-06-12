@@ -1,0 +1,28 @@
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 100px; /* Größerer Schriftgröße */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 40px 80px; /* Größerer Button */
+    font-size: 30px; /* Größerer Schriftgröße */
+}
+
+button:hover {
+    background-color: #45a049;
+}

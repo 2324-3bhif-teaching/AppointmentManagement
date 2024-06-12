@@ -86,7 +86,7 @@ export class DB {
 
         await connection.run(`CREATE TABLE IF NOT EXISTS Administrator
                               (
-                                  id           INTEGER NOT NULL primary key,
+                                  id           INTEGER NOT NULL primary key ,
                                   email        TEXT    NOT NULL,
                                   passwort     TEXT    NOT NULL
                               ) strict`
@@ -94,14 +94,14 @@ export class DB {
 
         await connection.run(`CREATE TABLE IF NOT EXISTS Station
                               (
-                                  id           INTEGER NOT NULL primary key,
+                                  id           INTEGER NOT NULL primary key autoincrement,
                                   name         TEXT    NOT NULL
                               ) strict`
         );
 
         await connection.run(`CREATE TABLE IF NOT EXISTS Queue
                               (
-                                  id             INTEGER NOT NULL primary key,
+                                  id             INTEGER NOT NULL primary key autoincrement,
                                   name           TEXT    NOT NULL,
                                   stationId        INTEGER NOT NULL,
                                   CONSTRAINT fk_station FOREIGN KEY (stationId) REFERENCES Station (id)
@@ -110,7 +110,7 @@ export class DB {
 
         await connection.run(`CREATE TABLE IF NOT EXISTS QueueManager
                               (
-                                  id              INTEGER NOT NULL primary key,
+                                  id              INTEGER NOT NULL primary key autoincrement ,
                                   administratorId   INTEGER NOT NULL,
                                   queueId           INTEGER NOT NULL,
                                   CONSTRAINT fk_administrator FOREIGN KEY (administratorId) REFERENCES Administrator (id),
@@ -126,7 +126,7 @@ export class DB {
 
         await connection.run(`CREATE TABLE IF NOT EXISTS WaitingPosition
                               (
-                                  id           INTEGER NOT NULL primary key,
+                                  id           INTEGER NOT NULL primary key autoincrement ,
                                   visitorId      INTEGER NOT NULL,
                                   queueId        INTEGER NOT NULL,
                                   joinTime      TEXT NOT NULL,

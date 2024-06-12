@@ -6,7 +6,8 @@ module.exports = {
         admin: './src/public/scripts/admin.ts',
         visitor: './src/public/scripts/visitor.ts',
         index: './src/public/scripts/index.ts',
-        login: './src/public/scripts/login.ts'
+        login: './src/public/scripts/login.ts',
+        station: './src/public/scripts/station.ts',
     },
     output: {
         filename: "[name].bundle.js",
