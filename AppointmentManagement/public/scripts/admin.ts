@@ -1,5 +1,5 @@
 import {initKeycloak} from "./keycloak";
-import {IStation} from "../../src/model";
+import {IQueue, IStation} from "../../src/model";
 
 async function fetchRestEndpoint(
     route: string,
@@ -47,6 +47,15 @@ async function loadStations() {
 selectElement.addEventListener('change', (event) => {
     const target = event.target as HTMLSelectElement;
     selectedStationId = Number(target.value);
+    if(selectedStationId !== 0) {
+        showQueues();
+    }
 });
+
+async function showQueues() {
+    const queues: IQueue[] = await fetchRestEndpoint(`http://localhost:3000/api/station/${selectedStationId}/queues` , "GET");
+
+    console.log(queues, queues.length);
+}
 
 (window as any).loadStations = loadStations;
