@@ -17,7 +17,7 @@
 
 /* Stil für den Button */
 #queueTable button {
-    background-color: #4CAF50;
+    background-color: #d86119;
     color: white;
     padding: 8px 16px;
     border: none;
@@ -26,7 +26,7 @@
 }
 
 #queueTable button:hover {
-    background-color: #45a049;
+    background-color: #e16314;
 }
 
 /* Dreieckiger Hintergrund */

@@ -20,6 +20,7 @@ async function fetchRestEndpoint(
 }
 
 if(!document.cookie.includes('visitor')) {
+    alert('Must login first! Scan the Qr-code again!');
     window.location.href = '/login.html';
 }
 
@@ -39,6 +40,14 @@ async function getCookie(cname: string): Promise<number> {
     return 0;
 }
 
+function clearCookies() {
+    const allCookies = document.cookie.split(';');
+
+    for (let i = 0; i < allCookies.length; i++) {
+        document.cookie = allCookies[i] + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+}
+
 async function joinQueue(){
     const currentURL: string = window.location.href;
     const queueId: number = parseInt(currentURL.split('?id=')[1]);
@@ -52,3 +61,4 @@ async function joinQueue(){
 }
 
 (window as any).joinQueue = joinQueue;
+(window as any).clearCookies = clearCookies;
