@@ -35,7 +35,8 @@ export class VisitorService extends ServiceBase {
                                                            AND visitorId != ?2
                                                            AND joinTime <= (SELECT joinTime
                                                                             FROM WaitingPosition
-                                                                            WHERE visitorId = ?3 AND queueId = ?4)`,
+                                                                            WHERE visitorId = ?3
+                                                                              AND queueId = ?4)`,
             {
                 1: queueId,
                 2: visitorId,
@@ -60,6 +61,16 @@ export class VisitorService extends ServiceBase {
         return false;
     }
 
+    public async isVisitorInQueue(visitorId: number, queueId: number): Promise<boolean> {
+        const stmt = await this.unit.prepare('SELECT * FROM WaitingPosition WHERE visitorId = ?1 AND queueId = ?2',
+            {
+                1: visitorId,
+                2: queueId
+            });
+
+        return (await stmt.get<any>()) !== undefined;
+    }
+
     public async insertWaitingPosition(queueId: number, visitorId: number): Promise<boolean> {
         const stmt = await this.unit.prepare('insert into WaitingPosition (visitorId, queueId, joinTime) values (?1, ?2, ?3)',
             {
@@ -68,7 +79,6 @@ export class VisitorService extends ServiceBase {
                 3: Date.now().toString(),
             }
         );
-
         return await this.executeStmt(stmt);
     }
 

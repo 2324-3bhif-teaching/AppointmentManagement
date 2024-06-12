@@ -54,7 +54,13 @@ async function joinQueue(){
     const visitorId: number = await getCookie("visitor");
 
     try {
-        await fetchRestEndpoint(`http://localhost:3000/api/visitor/queues/${queueId}/visitor/${visitorId}`, 'POST');
+        const isQueued = await fetchRestEndpoint(`http://localhost:3000/api/visitor/queues/${queueId}/visitor/${visitorId}`, 'GET');
+        if(!isQueued) {
+            await fetchRestEndpoint(`http://localhost:3000/api/visitor/queues/${queueId}/visitor/${visitorId}`, 'POST');
+        } else {
+            alert('You are already in the queue!');
+        }
+        location.href = "visitor.html";
     } catch (error) {
         console.error('Error:', error);
     }
