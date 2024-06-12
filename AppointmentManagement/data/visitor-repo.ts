@@ -72,11 +72,14 @@ export class VisitorService extends ServiceBase {
     }
 
     public async insertWaitingPosition(queueId: number, visitorId: number): Promise<boolean> {
+        let currentDateTime = new Date();
+        let formattedDateTime = currentDateTime.toISOString().replace('T', ' ').substring(0, 19);
+
         const stmt = await this.unit.prepare('insert into WaitingPosition (visitorId, queueId, joinTime) values (?1, ?2, ?3)',
             {
                 1: visitorId,
                 2: queueId,
-                3: Date.now().toString(),
+                3: formattedDateTime,
             }
         );
         return await this.executeStmt(stmt);
