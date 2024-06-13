@@ -1,6 +1,32 @@
 import {IQueue, IStation, IWaitingPosition} from "../../src/model";
 
 let currentVisitorID: number;
+const socket = new WebSocket('ws://localhost:8080');
+
+socket.addEventListener('open', (event) => {
+    console.log('WebSocket connection opened:', event);
+});
+
+socket.addEventListener('message', (event) => {
+    console.log('Message from server:', event.data);
+});
+
+socket.addEventListener('close', (event) => {
+    console.log('WebSocket connection closed:', event);
+});
+
+socket.addEventListener('error', (event) => {
+    console.error('WebSocket error:', event);
+});
+
+socket.addEventListener('message', (event) => {
+    const data = JSON.parse(event.data);
+
+    if (data.action === 'deleteQueue') {
+        console.log(`Warteposition ${data.waitingPositionId} wurde gelöscht.`);
+        loadQueues();
+    }
+});
 
 async function fetchRestEndpoint(
     route: string,
@@ -102,6 +128,11 @@ async function deleteQueue(queueId: number, visitorId: number){
     try {
         await fetchRestEndpoint(`http://localhost:3000/api/visitor/queues/${queueId}/visitor/${visitorId}`, 'DELETE');
         await loadQueues();
+        socket.send(JSON.stringify({
+            action: 'deleteQueue',
+            queueId: queueId,
+            visitorId: visitorId
+        }));
     } catch (error) {
         console.error('Error:', error);
     }

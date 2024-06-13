@@ -1,6 +1,24 @@
 import {initKeycloak} from "./keycloak";
 import {IQueue, IStation, IWaitingPosition} from "../../src/model";
 
+const socket = new WebSocket('ws://localhost:8080');
+
+socket.addEventListener('open', (event) => {
+    console.log('WebSocket connection opened:', event);
+});
+
+socket.addEventListener('message', (event) => {
+    console.log('Message from server:', event.data);
+});
+
+socket.addEventListener('close', (event) => {
+    console.log('WebSocket connection closed:', event);
+});
+
+socket.addEventListener('error', (event) => {
+    console.error('WebSocket error:', event);
+});
+
 async function fetchRestEndpoint(
     route: string,
     method: "GET" | "POST" | "PUT" | "DELETE",
@@ -103,6 +121,10 @@ async function deleteQueue(queueId: number){
     try {
         await fetchRestEndpoint(`http://localhost:3000/api/visitor/waitingPosition/${queueId}`, 'DELETE');
         await showQueues();
+        socket.send(JSON.stringify({
+            action: 'deleteQueue',
+            waitingPositionId: queueId
+        }));
     } catch (error) {
         console.error('Error:', error);
     }

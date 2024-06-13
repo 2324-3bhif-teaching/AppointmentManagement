@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "server-dev": "npx nodemon app.ts",
-    "client-dev": "npx tsc --watch --project ./src/public",
+    "client-dev": "npx tsc --watch --project ./src/tsconfig.json",
     "start": "tsx src/app.ts",
-    "build": "npx webpack --watch --mode=development"
+    "build": "npx webpack --watch --mode=development",
+    "websocket": "ts-node server/websocketServer.ts"
   },
   "author": "stroschneider.fabian",
   "license": "MIT",
@@ -21,7 +22,8 @@
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
     "keycloak-connect": "^24.0.3",
-    "keycloak-js": "^24.0.3"
+    "keycloak-js": "^24.0.3",
+    "ws": "^8.12.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -32,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
     "eslint-import-resolver-webpack": "^0.13.8",
+    "@types/ws": "^8.5.4",
     "nodemon": "^2.0.15",
     "ts-node": "^10.5.0",
     "eslint": "^8.56.0",
