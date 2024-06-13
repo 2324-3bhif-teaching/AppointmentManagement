@@ -1,17 +1,17 @@
 .queueTable {
-    width: 80%; /* Breite der Tabelle */
-    margin: 50px auto; /* Zentrieren der Tabelle */
+    width: 80%;
+    margin: 50px auto;
     border-collapse: collapse;
 }
 
 .queueTable th, .queueTable td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Trennlinie zwischen den Zeilen */
+    border-bottom: 1px solid #ddd;
 }
 
 .queueTable th {
-    background-color: #f2f2f2; /* Hintergrundfarbe für die Überschriften */
+    background-color: #f2f2f2;
 }
 
 /* Stil für den Button */
@@ -51,4 +51,23 @@ div::before {
     text-align: center;
     margin-top: 50px;
     font-size: 70px;
+}
+
+#stations {
+    width: 80%;
+    margin: 50px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+}
+
+#stations:hover {
+    border-color: #d86119;
+}
+
+#stations:focus {
+    outline: none;
+    border-color: #d86119;
 }

@@ -187,3 +187,26 @@ visitorRouter.delete("/queues/:queueId/visitor/:visitorId", async (req, res) => 
         await unit.complete();
     }
 });
+
+visitorRouter.delete("/waitingPosition/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const success = await service.deleteWaitingPosition(id);
+
+        if (success) {
+            await unit.complete();
+            res.status(StatusCodes.OK).send(true);
+        } else {
+            await unit.complete();
+            res.status(StatusCodes.NOT_FOUND).send(false);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});

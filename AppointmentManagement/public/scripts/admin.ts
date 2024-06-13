@@ -93,10 +93,20 @@ async function createTableRows(visitors: IWaitingPosition[],): Promise<string> {
     for (const visitor of visitors) {
         rows += `<tr>
                     <td>${visitor.visitorId}</td>
-                    <td><button onclick="">leave</button></td>
+                    <td><button onclick="deleteQueue(${visitor.id})">kick</button></td>
                  </tr>`;
     }
     return rows;
 }
 
+async function deleteQueue(queueId: number){
+    try {
+        await fetchRestEndpoint(`http://localhost:3000/api/visitor/waitingPosition/${queueId}`, 'DELETE');
+        await showQueues();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+(window as any).deleteQueue = deleteQueue;
 (window as any).loadStations = loadStations;

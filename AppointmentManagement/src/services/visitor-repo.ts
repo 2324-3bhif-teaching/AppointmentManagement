@@ -94,4 +94,10 @@ export class VisitorService extends ServiceBase {
 
         return await this.executeStmt(stmt);
     }
+
+    public async deleteWaitingPosition(id: number): Promise<boolean> {
+        const stmt = await this.unit.prepare('DELETE FROM WaitingPosition WHERE id = ?', id);
+
+        return await this.executeStmt(stmt);
+    }
 }
