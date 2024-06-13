@@ -21,6 +21,9 @@
 | 04.06.2024 | 78 | Fixen der GH-Actions |
 | 08.06.2024 | 36 | Implementieren der Keycloak| https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/13[#13]
 | 09.06.2024 | 51 | Login für die Besucher | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/22[#22]
+| 11.06.2024 | 98 | Login via Qr-code | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/26[#26]
+| 12.06.2024 | 78 | Admin kann Station zum Managen auswählen | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/24[#24]
+| 13.06.2024 | 23 | Gewünschte Änderungen | https://github.com/2324-3bhif-teaching/AppointmentManagement/issues/30[#30]
 |  |  |  |
-|  | 1.141 |  |
+|  | 1.343 |  |
 |===

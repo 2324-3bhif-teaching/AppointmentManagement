@@ -19,6 +19,7 @@ export interface IQueueManager {
 export interface IStation {
     id?: number;
     name: string;
+    room: string;
 }
 
 export interface IVisitor {

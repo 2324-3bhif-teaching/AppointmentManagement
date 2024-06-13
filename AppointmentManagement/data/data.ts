@@ -35,12 +35,12 @@ export class DB {
         await connection.run(`DELETE FROM Administrator;`);
         await connection.run(`DELETE FROM Visitor;`);
 
-        await connection.run(`INSERT INTO Station (id, name)
-                              VALUES (1, 'Roboterführerschein');`);
-        await connection.run(`INSERT INTO Station (id, name)
-                              VALUES (2, 'Softwareentwicklung');`);
-        await connection.run(`INSERT INTO Station (id, name)
-                              VALUES (3, 'Führung');`);
+        await connection.run(`INSERT INTO Station (id, name, room)
+                              VALUES (1, 'Roboterführerschein', '109');`);
+        await connection.run(`INSERT INTO Station (id, name, room)
+                              VALUES (2, 'Softwareentwicklung', 'EDV-10');`);
+        await connection.run(`INSERT INTO Station (id, name, room)
+                              VALUES (3, 'Führung', 'E-21');`);
         await connection.run(`INSERT INTO Administrator (id, email, passwort)
                               VALUES (1, 'admin@htl-leonding.ac.at', 'admin');`);
         await connection.run(`INSERT INTO Administrator (id, email, passwort)
@@ -95,7 +95,8 @@ export class DB {
         await connection.run(`CREATE TABLE IF NOT EXISTS Station
                               (
                                   id           INTEGER NOT NULL primary key autoincrement,
-                                  name         TEXT    NOT NULL
+                                  name         TEXT    NOT NULL,
+                                  room         TEXT    NOT NULL
                               ) strict`
         );
 
