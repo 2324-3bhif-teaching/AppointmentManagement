@@ -24,7 +24,7 @@ export class QueueService extends ServiceBase {
     }
 
     public async getNextVisitors(id: number): Promise<IWaitingPosition[] | null> {
-        const stmt: Statement = await this.unit.prepare('SELECT * FROM WaitingPosition where queueId = ? ORDER BY joinTime LIMIT 5;', id);
+        const stmt: Statement = await this.unit.prepare('SELECT * FROM WaitingPosition where queueId = ? AND finished = 0 ORDER BY joinTime LIMIT 5;', id);
         return ServiceBase.nullIfUndefined(await stmt.all<IWaitingPosition[]>());
     }
 }

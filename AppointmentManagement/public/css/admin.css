@@ -1,0 +1,54 @@
+.queueTable {
+    width: 80%; /* Breite der Tabelle */
+    margin: 50px auto; /* Zentrieren der Tabelle */
+    border-collapse: collapse;
+}
+
+.queueTable th, .queueTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Trennlinie zwischen den Zeilen */
+}
+
+.queueTable th {
+    background-color: #f2f2f2; /* Hintergrundfarbe für die Überschriften */
+}
+
+/* Stil für den Button */
+.queueTable button {
+    background-color: #d86119;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.queueTable button:hover {
+    background-color: #e16314;
+}
+
+/* Dreieckiger Hintergrund */
+div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.queueHeading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 70px;
+}
