@@ -1,5 +1,5 @@
 import {initKeycloak} from "./keycloak";
-import {IQueue, IStation} from "../../src/model";
+import {IQueue, IStation, IWaitingPosition} from "../../src/model";
 
 async function fetchRestEndpoint(
     route: string,
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 let selectedStationId: number = 0;
 
 const selectElement = document.getElementById('stations')!;
+
 async function loadStations() {
     const stations: IStation[] = await fetchRestEndpoint("http://localhost:3000/api/station", "GET");
     for(let station of stations) {
@@ -55,7 +56,14 @@ selectElement.addEventListener('change', (event) => {
 async function showQueues() {
     const queues: IQueue[] = await fetchRestEndpoint(`http://localhost:3000/api/station/${selectedStationId}/queues` , "GET");
 
-    console.log(queues, queues.length);
+    for(let queue of queues) {
+        const visitors: IWaitingPosition[] = await fetchRestEndpoint(`http://localhost:3000/api/queue/${queue.id}/visitors`, "GET");
+        console.log("newQueue" + queue.name);
+        console.log("newVisitor");
+        for(let visitor of visitors) {
+            console.log(visitor);
+        }
+    }
 }
 
 (window as any).loadStations = loadStations;
