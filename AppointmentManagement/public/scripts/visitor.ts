@@ -74,22 +74,28 @@ async function setCurrentUser() {
 }
 
 async function createTableRows(queues: IQueue[], waitingPositions: IWaitingPosition[]): Promise<string> {
-    let rows = '';
+    let rows = [];
     for (const queue of queues) {
         let currentPosition: IWaitingPosition = waitingPositions.find(wp => wp.queueId === queue.id)!;
         if (currentPosition.finished === 0) {
             const station: IStation = await fetchRestEndpoint(`http://localhost:3000/api/station/station/`+ queue.stationId, 'GET');
 
             let position = await getPosition(currentVisitorID, queue.id!);
-            rows += `<tr>
+            rows.push({
+                position: position,
+                row: `<tr>
                     <td>${position}</td>
                     <td>${queue.name}</td>
                     <td><button onclick="deleteQueue(${queue.id}, ${currentVisitorID})">leave</button></td>
                     <td>${station.room}</td>
-                 </tr>`;
+                 </tr>`
+            });
         }
     }
-    return rows;
+
+    rows.sort((a, b) => a.position - b.position);
+
+    return rows.map(r => r.row).join('');
 }
 
 async function deleteQueue(queueId: number, visitorId: number){
