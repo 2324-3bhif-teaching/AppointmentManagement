@@ -1,4 +1,4 @@
-import {IQueue, IWaitingPosition} from "../../src/model";
+import {IQueue, IStation, IWaitingPosition} from "../../src/model";
 
 let currentVisitorID: number;
 
@@ -78,11 +78,14 @@ async function createTableRows(queues: IQueue[], waitingPositions: IWaitingPosit
     for (const queue of queues) {
         let currentPosition: IWaitingPosition = waitingPositions.find(wp => wp.queueId === queue.id)!;
         if (currentPosition.finished === 0) {
+            const station: IStation = await fetchRestEndpoint(`http://localhost:3000/api/station/station/`+ queue.stationId, 'GET');
+
             let position = await getPosition(currentVisitorID, queue.id!);
             rows += `<tr>
                     <td>${position}</td>
                     <td>${queue.name}</td>
                     <td><button onclick="deleteQueue(${queue.id}, ${currentVisitorID})">leave</button></td>
+                    <td>${station.room}</td>
                  </tr>`;
         }
     }
