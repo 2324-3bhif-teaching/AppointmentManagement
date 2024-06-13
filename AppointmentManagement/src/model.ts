@@ -18,7 +18,7 @@ export interface IQueueManager {
 
 export interface IStation {
     id?: number;
-    stationName: string;
+    name: string;
 }
 
 export interface IVisitor {

@@ -1,8 +1,8 @@
 import express from "express";
-import {Unit} from "../src/unit";
+import {Unit} from "../unit";
 import {StatusCodes} from "http-status-codes";
-import {VisitorService} from "../data/visitor-repo";
-import {IQueue, IVisitor} from "../src/model";
+import {VisitorService} from "../services/visitor-repo";
+import {IQueue, IVisitor} from "../model";
 
 export const visitorRouter = express.Router();
 
@@ -172,6 +172,29 @@ visitorRouter.delete("/queues/:queueId/visitor/:visitorId", async (req, res) => 
     try {
         const service: VisitorService = new VisitorService(unit);
         const success = await service.deleteQueueByVisitorId(queueId, visitorId);
+
+        if (success) {
+            await unit.complete();
+            res.status(StatusCodes.OK).send(true);
+        } else {
+            await unit.complete();
+            res.status(StatusCodes.NOT_FOUND).send(false);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
+visitorRouter.delete("/waitingPosition/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: VisitorService = new VisitorService(unit);
+        const success = await service.deleteWaitingPosition(id);
 
         if (success) {
             await unit.complete();

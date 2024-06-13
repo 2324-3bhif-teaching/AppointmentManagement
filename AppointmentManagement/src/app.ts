@@ -2,10 +2,10 @@ import express from "express";
 import cors from "cors";
 import {DB} from "../data/data";
 import {join} from "path";
-import {adminRouter} from "../routers/admin-router";
-import {queueRouter} from "../routers/queue-router";
-import {stationRouter} from "../routers/station-router";
-import {visitorRouter} from "../routers/visitor-router";
+import {adminRouter} from "./routers/admin-router";
+import {queueRouter} from "./routers/queue-router";
+import {stationRouter} from "./routers/station-router";
+import {visitorRouter} from "./routers/visitor-router";
 import session from 'express-session';
 import Keycloak from 'keycloak-connect';
 
@@ -26,12 +26,12 @@ app.use(keycloak.middleware({
 
 app.get('/logout', keycloak.protect(), (req: any, res) => {
     req.kauth.logout();
-    res.redirect('/');
+    res.redirect('http://localhost:3000/index.html');
 });
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(join(__dirname, "/public")));
+app.use(express.static(join(__dirname, "../public")));
 
 app.use("/api/admin", adminRouter);
 app.use("/api/queue", queueRouter);

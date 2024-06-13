@@ -3,15 +3,15 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
     entry: {
-        admin: './src/public/scripts/admin.ts',
-        visitor: './src/public/scripts/visitor.ts',
-        index: './src/public/scripts/index.ts',
-        login: './src/public/scripts/login.ts',
-        station: './src/public/scripts/station.ts',
+        admin: './public/scripts/admin.ts',
+        visitor: './public/scripts/visitor.ts',
+        index: './public/scripts/index.ts',
+        login: './public/scripts/login.ts',
+        station: './public/scripts/station.ts',
     },
     output: {
         filename: "[name].bundle.js",
-        path: path.resolve(__dirname, 'src/public/scripts/dist')
+        path: path.resolve(__dirname, 'public/scripts/dist')
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],

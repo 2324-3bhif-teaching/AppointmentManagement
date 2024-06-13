@@ -1,8 +1,8 @@
 import express from "express";
-import {Unit} from "../src/unit";
+import {Unit} from "../unit";
 import {StatusCodes} from "http-status-codes";
-import {StationService} from "../data/station-repo";
-import {IStation} from "../src/model";
+import {StationService} from "../services/station-repo";
+import {IQueue, IStation} from "../model";
 
 export const stationRouter = express.Router();
 
@@ -32,6 +32,27 @@ stationRouter.get("/:id", async (req, res) => {
             res.sendStatus(StatusCodes.NOT_FOUND);
         } else {
             res.status(StatusCodes.OK).redirect(`http://localhost:3000/station.html?id=${id}`);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+    } finally {
+        await unit.complete();
+    }
+});
+
+stationRouter.get("/:id/queues", async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const unit: Unit = await Unit.create(true);
+    try {
+        const service: StationService = new StationService(unit);
+        const queues: IQueue[] | null = await service.getQueuesByStationId(id);
+
+        if (queues === null) {
+            res.sendStatus(StatusCodes.NOT_FOUND);
+        } else {
+            res.status(StatusCodes.OK).json(queues);
         }
     } catch (error) {
         console.log(error);

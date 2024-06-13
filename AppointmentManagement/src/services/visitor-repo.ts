@@ -1,7 +1,7 @@
 import {Statement} from "sqlite";
-import {ServiceBase} from "../src/service-base";
-import {Unit} from "../src/unit";
-import {IQueue, IVisitor, IWaitingPosition} from "../src/model";
+import {ServiceBase} from "../service-base";
+import {Unit} from "../unit";
+import {IQueue, IVisitor, IWaitingPosition} from "../model";
 
 export class VisitorService extends ServiceBase {
     constructor(unit: Unit) {
@@ -91,6 +91,12 @@ export class VisitorService extends ServiceBase {
                 1: visitorId,
                 2: queueId
             });
+
+        return await this.executeStmt(stmt);
+    }
+
+    public async deleteWaitingPosition(id: number): Promise<boolean> {
+        const stmt = await this.unit.prepare('DELETE FROM WaitingPosition WHERE id = ?', id);
 
         return await this.executeStmt(stmt);
     }
