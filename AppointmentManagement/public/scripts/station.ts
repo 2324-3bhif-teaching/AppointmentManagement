@@ -1,3 +1,5 @@
+import {IStation} from "../../src/model";
+
 async function fetchRestEndpoint(
     route: string,
     method: "GET" | "POST" | "PUT" | "DELETE",
@@ -48,9 +50,15 @@ function clearCookies() {
     }
 }
 
+const queueId: number = parseInt(window.location.href.split('?id=')[1]);
+
+async function getQueueInfo() {
+    const queueName = document.getElementById('queueHeader') as HTMLHeadingElement;
+    const queueInfo: IStation = await fetchRestEndpoint(`http://localhost:3000/api/queue/${queueId}`, 'GET');
+    queueName.innerText = "Join " + queueInfo.name;
+}
+
 async function joinQueue(){
-    const currentURL: string = window.location.href;
-    const queueId: number = parseInt(currentURL.split('?id=')[1]);
     const visitorId: number = await getCookie("visitor");
 
     try {
@@ -68,3 +76,4 @@ async function joinQueue(){
 
 (window as any).joinQueue = joinQueue;
 (window as any).clearCookies = clearCookies;
+(window as any).getQueueInfo = getQueueInfo;

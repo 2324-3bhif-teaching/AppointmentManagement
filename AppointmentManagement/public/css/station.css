@@ -9,7 +9,7 @@
 h1 {
     font-weight: bold;
     text-align: center;
-    font-size: 100px; /* Größerer Schriftgröße */
+    font-size: 60px; /* Größerer Schriftgröße */
 }
 
 button {
@@ -19,10 +19,17 @@ button {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
-    padding: 40px 80px; /* Größerer Button */
-    font-size: 30px; /* Größerer Schriftgröße */
+    padding: 30px 60px;
+    font-size: 20px;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+a[href="visitor.html"] button {
+    background-color: red;
+    color: white;
+    padding: 20px 40px;
+    font-size: 20px;
 }

@@ -7,7 +7,7 @@
     <script type="module" src="scripts/dist/station.bundle.js"></script>
     <link rel="stylesheet" href="./css/station.css">
 </head>
-<body>
+<body onload="getQueueInfo()">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">Appointment Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -34,9 +34,11 @@
 </nav>
 
 <div class="centered-container">
-    <h1>Joinen der Queue</h1>
+    <h1 id="queueHeader"></h1>
     <button onclick="joinQueue()">Join Queue</button>
+    <a href="visitor.html">
+        <button>Don't Join Queue</button>
+    </a>
 </div>
-
 </body>
 </html>
