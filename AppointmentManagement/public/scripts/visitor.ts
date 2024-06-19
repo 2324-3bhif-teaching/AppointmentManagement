@@ -2,7 +2,7 @@ import {IQueue, IStation, IWaitingPosition} from "../../src/model";
 
 let currentVisitorID: number;
 
-async function fetchRestEndpoint(
+export async function fetchRestEndpoint(
     route: string,
     method: "GET" | "POST" | "PUT" | "DELETE",
     data?: object
@@ -23,7 +23,7 @@ async function fetchRestEndpoint(
     }
 }
 
-async function loadQueues(){
+export async function loadQueues(){
     if(!document.cookie.includes('visitor')) {
         window.location.href = '/login.html';
     }
@@ -98,7 +98,7 @@ async function createTableRows(queues: IQueue[], waitingPositions: IWaitingPosit
     return rows.map(r => r.row).join('');
 }
 
-async function deleteQueue(queueId: number, visitorId: number){
+export async function deleteQueue(queueId: number, visitorId: number){
     try {
         await fetchRestEndpoint(`http://localhost:3000/api/visitor/queues/${queueId}/visitor/${visitorId}`, 'DELETE');
         await loadQueues();
@@ -107,7 +107,7 @@ async function deleteQueue(queueId: number, visitorId: number){
     }
 }
 
-async function getPosition(visitorId: number, queueId: number): Promise<number> {
+export async function getPosition(visitorId: number, queueId: number): Promise<number> {
     try {
         const result = await fetchRestEndpoint(`http://localhost:3000/api/visitor/waitingPositions/visitor/` + visitorId + `/queue/` + queueId, 'GET');
         return result.position;
