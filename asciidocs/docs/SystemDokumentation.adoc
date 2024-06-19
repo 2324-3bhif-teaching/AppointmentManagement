@@ -1,0 +1,379 @@
+= Systemdokumentation
+:toc: left
+:sectnums:
+:toclevels: 2
+:table-caption:
+:linkattrs:
+
+== Queue-Router
+
+=== GET /
+
+Ruft alle Warteschlangen ab.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Warteschlangen (`IQueue`)
+- id: number
+- name: string
+- status: string
+
+==== Fehlerantwort:
+
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /{id}
+
+Ruft eine Warteschlange anhand ihrer ID ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Warteschlange.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: JSON-Objekt der Warteschlange (`IQueue`)
+- id: number
+- name: string
+- status: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /stations/{id}
+
+Ruft alle Stationen einer bestimmten Warteschlange ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Warteschlange.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Stationen (`IStation`)
+- id: number
+- queueId: number
+- name: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /{id}/visitors
+
+Ruft alle Besucher einer bestimmten Warteschlange ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Warteschlange.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Besucher (`IWaitingPosition`)
+- id: number
+- queueId: number
+- visitorId: number
+- position: number
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+== Station-Router
+
+=== GET /
+
+Ruft alle Stationen ab.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Stationen (`IStation`)
+- id: number
+- name: string
+- location: string
+
+==== Fehlerantwort:
+
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /station/{id}
+
+Ruft eine Station anhand ihrer ID ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Station.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: JSON-Objekt der Station (`IStation`)
+- id: number
+- name: string
+- location: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /{id}
+
+Ruft eine Station anhand ihrer ID ab und leitet zu einer spezifischen Seite weiter.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Station.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Weiterleitung zur URL mit der ID der Station
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /{id}/queues
+
+Ruft alle Warteschlangen einer bestimmten Station ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Station.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Warteschlangen (`IQueue`)
+- id: number
+- stationId: number
+- name: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+== Visitor-Router
+
+=== GET /
+
+Ruft alle Besucher ab.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Besucher (`IVisitor`)
+- id: number
+- name: string
+
+==== Fehlerantwort:
+
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /{id}
+
+Ruft einen Besucher anhand seiner ID ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: JSON-Objekt des Besuchers (`IVisitor`)
+- id: number
+- name: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /queues/{id}
+
+Ruft alle Warteschlangen eines bestimmten Besuchers ab.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von JSON-Objekten der Warteschlangen (`IQueue`)
+- id: number
+- visitorId: number
+- name: string
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /waitingPositions/visitor/{visitorId}/queue/{queueId}
+
+Ruft die Warteschlangenposition eines bestimmten Besuchers in einer bestimmten Warteschlange ab.
+
+==== Parameter:
+
+- `visitorId` (number): Die eindeutige ID des Besuchers.
+- `queueId` (number): Die eindeutige ID der Warteschlange.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Warteschlangenposition (number)
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: "Not Found"
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /waitingPositions/queued
+
+Ruft alle Warteschlangenpositionen ab.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Array von Warteschlangenpositionen
+
+==== Fehlerantwort:
+
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== GET /queues/{queueId}/visitor/{visitorId}
+
+Überprüft, ob ein Besucher in einer bestimmten Warteschlange ist.
+
+==== Parameter:
+
+- `queueId` (number): Die eindeutige ID der Warteschlange.
+- `visitorId` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: Boolean
+
+==== Fehlerantwort:
+
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== POST /{id}
+
+Fügt einen neuen Besucher hinzu.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 201
+- Body: true
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: false
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== POST /queues/{queueId}/visitor/{visitorId}
+
+Fügt einen Besucher zu einer Warteschlange hinzu.
+
+==== Parameter:
+
+- `queueId` (number): Die eindeutige ID der Warteschlange.
+- `visitorId` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 201
+- Body: true
+
+==== Fehlerantwort:
+
+- Statuscode: 409
+- Body: false
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== DELETE /queues/{queueId}/visitor/{visitorId}
+
+Entfernt einen Besucher aus einer Warteschlange.
+
+==== Parameter:
+
+- `queueId` (number): Die eindeutige ID der Warteschlange.
+- `visitorId` (number): Die eindeutige ID des Besuchers.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: true
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: false
+- Statuscode: 500
+- Body: "Internal Server Error"
+
+=== DELETE /waitingPosition/{id}
+
+Löscht eine Warteschlangenposition.
+
+==== Parameter:
+
+- `id` (number): Die eindeutige ID der Warteschlangenposition.
+
+==== Erfolgreiche Antwort:
+
+- Statuscode: 200
+- Body: true
+
+==== Fehlerantwort:
+
+- Statuscode: 404
+- Body: false
+- Statuscode: 500
+- Body: "Internal Server Error"
