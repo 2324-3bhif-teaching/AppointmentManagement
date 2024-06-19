@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
 <link rel="icon" type="image/png" href="themes/favicon.png">
-<title>Dokumentation Appointment Management</title>
+<title>Systemdokumentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -437,83 +437,949 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Dokumentation Appointment Management</h1>
+<h1>Systemdokumentation</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_projektidee">1. Projektidee</a></li>
-<li><a href="#_projektauftrag">2. Projektauftrag</a></li>
-<li><a href="#_pflichtenheft">3. Pflichtenheft</a></li>
-<li><a href="#_systemdokumentation">4. Systemdokumentation</a></li>
-<li><a href="#_arbeitsstunden">5. Arbeitsstunden</a></li>
-<li><a href="#_mockups">6. Mockups</a></li>
-<li><a href="#_slides">7. Slides</a></li>
+<li><a href="#_queue_router">1. Queue-Router</a>
+<ul class="sectlevel2">
+<li><a href="#_get">1.1. GET /</a></li>
+<li><a href="#_get_id">1.2. GET /{id}</a></li>
+<li><a href="#_get_stationsid">1.3. GET /stations/{id}</a></li>
+<li><a href="#_get_idvisitors">1.4. GET /{id}/visitors</a></li>
+</ul>
+</li>
+<li><a href="#_station_router">2. Station-Router</a>
+<ul class="sectlevel2">
+<li><a href="#_get_2">2.1. GET /</a></li>
+<li><a href="#_get_stationid">2.2. GET /station/{id}</a></li>
+<li><a href="#_get_id_2">2.3. GET /{id}</a></li>
+<li><a href="#_get_idqueues">2.4. GET /{id}/queues</a></li>
+</ul>
+</li>
+<li><a href="#_visitor_router">3. Visitor-Router</a>
+<ul class="sectlevel2">
+<li><a href="#_get_3">3.1. GET /</a></li>
+<li><a href="#_get_id_3">3.2. GET /{id}</a></li>
+<li><a href="#_get_queuesid">3.3. GET /queues/{id}</a></li>
+<li><a href="#_get_waitingpositionsvisitorvisitoridqueuequeueid">3.4. GET /waitingPositions/visitor/{visitorId}/queue/{queueId}</a></li>
+<li><a href="#_get_waitingpositionsqueued">3.5. GET /waitingPositions/queued</a></li>
+<li><a href="#_get_queuesqueueidvisitorvisitorid">3.6. GET /queues/{queueId}/visitor/{visitorId}</a></li>
+<li><a href="#_post_id">3.7. POST /{id}</a></li>
+<li><a href="#_post_queuesqueueidvisitorvisitorid">3.8. POST /queues/{queueId}/visitor/{visitorId}</a></li>
+<li><a href="#_delete_queuesqueueidvisitorvisitorid">3.9. DELETE /queues/{queueId}/visitor/{visitorId}</a></li>
+<li><a href="#_delete_waitingpositionid">3.10. DELETE /waitingPosition/{id}</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_queue_router"><a class="anchor" href="#_queue_router"></a>1. Queue-Router</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre>Kontakt: f.stroschneider@students.htl-leonding.ac.at</pre>
+<div class="sect2">
+<h3 id="_get"><a class="anchor" href="#_get"></a>1.1. GET /</h3>
+<div class="paragraph">
+<p>Ruft alle Warteschlangen ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort"><a class="anchor" href="#_erfolgreiche_antwort"></a>1.1.1. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Warteschlangen (<code>IQueue</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+<li>
+<p>status: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort"><a class="anchor" href="#_fehlerantwort"></a>1.1.2. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_id"><a class="anchor" href="#_get_id"></a>1.2. GET /{id}</h3>
+<div class="paragraph">
+<p>Ruft eine Warteschlange anhand ihrer ID ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter"><a class="anchor" href="#_parameter"></a>1.2.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_2"><a class="anchor" href="#_erfolgreiche_antwort_2"></a>1.2.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: JSON-Objekt der Warteschlange (<code>IQueue</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+<li>
+<p>status: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_2"><a class="anchor" href="#_fehlerantwort_2"></a>1.2.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_stationsid"><a class="anchor" href="#_get_stationsid"></a>1.3. GET /stations/{id}</h3>
+<div class="paragraph">
+<p>Ruft alle Stationen einer bestimmten Warteschlange ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_2"><a class="anchor" href="#_parameter_2"></a>1.3.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_3"><a class="anchor" href="#_erfolgreiche_antwort_3"></a>1.3.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Stationen (<code>IStation</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>queueId: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_3"><a class="anchor" href="#_fehlerantwort_3"></a>1.3.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_idvisitors"><a class="anchor" href="#_get_idvisitors"></a>1.4. GET /{id}/visitors</h3>
+<div class="paragraph">
+<p>Ruft alle Besucher einer bestimmten Warteschlange ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_3"><a class="anchor" href="#_parameter_3"></a>1.4.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_4"><a class="anchor" href="#_erfolgreiche_antwort_4"></a>1.4.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Besucher (<code>IWaitingPosition</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>queueId: number</p>
+</li>
+<li>
+<p>visitorId: number</p>
+</li>
+<li>
+<p>position: number</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_4"><a class="anchor" href="#_fehlerantwort_4"></a>1.4.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_projektidee"><a class="anchor" href="#_projektidee"></a>1. Projektidee</h2>
+<h2 id="_station_router"><a class="anchor" href="#_station_router"></a>2. Station-Router</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_2"><a class="anchor" href="#_get_2"></a>2.1. GET /</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/Projektidee">Projektidee</a></p>
+<p>Ruft alle Stationen ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_5"><a class="anchor" href="#_erfolgreiche_antwort_5"></a>2.1.1. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Stationen (<code>IStation</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+<li>
+<p>location: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_5"><a class="anchor" href="#_fehlerantwort_5"></a>2.1.2. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_stationid"><a class="anchor" href="#_get_stationid"></a>2.2. GET /station/{id}</h3>
+<div class="paragraph">
+<p>Ruft eine Station anhand ihrer ID ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_4"><a class="anchor" href="#_parameter_4"></a>2.2.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Station.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_6"><a class="anchor" href="#_erfolgreiche_antwort_6"></a>2.2.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: JSON-Objekt der Station (<code>IStation</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+<li>
+<p>location: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_6"><a class="anchor" href="#_fehlerantwort_6"></a>2.2.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_id_2"><a class="anchor" href="#_get_id_2"></a>2.3. GET /{id}</h3>
+<div class="paragraph">
+<p>Ruft eine Station anhand ihrer ID ab und leitet zu einer spezifischen Seite weiter.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_5"><a class="anchor" href="#_parameter_5"></a>2.3.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Station.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_7"><a class="anchor" href="#_erfolgreiche_antwort_7"></a>2.3.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Weiterleitung zur URL mit der ID der Station</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_7"><a class="anchor" href="#_fehlerantwort_7"></a>2.3.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_idqueues"><a class="anchor" href="#_get_idqueues"></a>2.4. GET /{id}/queues</h3>
+<div class="paragraph">
+<p>Ruft alle Warteschlangen einer bestimmten Station ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_6"><a class="anchor" href="#_parameter_6"></a>2.4.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Station.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_8"><a class="anchor" href="#_erfolgreiche_antwort_8"></a>2.4.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Warteschlangen (<code>IQueue</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>stationId: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_8"><a class="anchor" href="#_fehlerantwort_8"></a>2.4.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_projektauftrag"><a class="anchor" href="#_projektauftrag"></a>2. Projektauftrag</h2>
+<h2 id="_visitor_router"><a class="anchor" href="#_visitor_router"></a>3. Visitor-Router</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_3"><a class="anchor" href="#_get_3"></a>3.1. GET /</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/Projektauftrag">Projektauftrag</a></p>
+<p>Ruft alle Besucher ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_9"><a class="anchor" href="#_erfolgreiche_antwort_9"></a>3.1.1. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Besucher (<code>IVisitor</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_9"><a class="anchor" href="#_fehlerantwort_9"></a>3.1.2. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_pflichtenheft"><a class="anchor" href="#_pflichtenheft"></a>3. Pflichtenheft</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_id_3"><a class="anchor" href="#_get_id_3"></a>3.2. GET /{id}</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/Pflichtenheft">Pflichtenheft</a></p>
+<p>Ruft einen Besucher anhand seiner ID ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_7"><a class="anchor" href="#_parameter_7"></a>3.2.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_10"><a class="anchor" href="#_erfolgreiche_antwort_10"></a>3.2.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: JSON-Objekt des Besuchers (<code>IVisitor</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_10"><a class="anchor" href="#_fehlerantwort_10"></a>3.2.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_systemdokumentation"><a class="anchor" href="#_systemdokumentation"></a>4. Systemdokumentation</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_queuesid"><a class="anchor" href="#_get_queuesid"></a>3.3. GET /queues/{id}</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/SystemDokumentation">Systemdokumentation</a></p>
+<p>Ruft alle Warteschlangen eines bestimmten Besuchers ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_8"><a class="anchor" href="#_parameter_8"></a>3.3.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_11"><a class="anchor" href="#_erfolgreiche_antwort_11"></a>3.3.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von JSON-Objekten der Warteschlangen (<code>IQueue</code>)</p>
+</li>
+<li>
+<p>id: number</p>
+</li>
+<li>
+<p>visitorId: number</p>
+</li>
+<li>
+<p>name: string</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_11"><a class="anchor" href="#_fehlerantwort_11"></a>3.3.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_arbeitsstunden"><a class="anchor" href="#_arbeitsstunden"></a>5. Arbeitsstunden</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_waitingpositionsvisitorvisitoridqueuequeueid"><a class="anchor" href="#_get_waitingpositionsvisitorvisitoridqueuequeueid"></a>3.4. GET /waitingPositions/visitor/{visitorId}/queue/{queueId}</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/Arbeitsstunden">Arbeitsstunden</a></p>
+<p>Ruft die Warteschlangenposition eines bestimmten Besuchers in einer bestimmten Warteschlange ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_9"><a class="anchor" href="#_parameter_9"></a>3.4.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>visitorId</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+<li>
+<p><code>queueId</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_12"><a class="anchor" href="#_erfolgreiche_antwort_12"></a>3.4.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Warteschlangenposition (number)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_12"><a class="anchor" href="#_fehlerantwort_12"></a>3.4.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: "Not Found"</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_mockups"><a class="anchor" href="#_mockups"></a>6. Mockups</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_waitingpositionsqueued"><a class="anchor" href="#_get_waitingpositionsqueued"></a>3.5. GET /waitingPositions/queued</h3>
 <div class="paragraph">
-<p><a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/Mockups.pdf">Mockups</a></p>
+<p>Ruft alle Warteschlangenpositionen ab.</p>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_13"><a class="anchor" href="#_erfolgreiche_antwort_13"></a>3.5.1. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Array von Warteschlangenpositionen</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_13"><a class="anchor" href="#_fehlerantwort_13"></a>3.5.2. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_slides"><a class="anchor" href="#_slides"></a>7. Slides</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_queuesqueueidvisitorvisitorid"><a class="anchor" href="#_get_queuesqueueidvisitorvisitorid"></a>3.6. GET /queues/{queueId}/visitor/{visitorId}</h3>
 <div class="paragraph">
-<p>RevealJs Slides can be found <a href="https://2324-3bhif-teaching.github.io/AppointmentManagement/slides" target="_blank" rel="noopener">here</a></p>
+<p>Überprüft, ob ein Besucher in einer bestimmten Warteschlange ist.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_10"><a class="anchor" href="#_parameter_10"></a>3.6.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>queueId</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+<li>
+<p><code>visitorId</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_14"><a class="anchor" href="#_erfolgreiche_antwort_14"></a>3.6.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: Boolean</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_14"><a class="anchor" href="#_fehlerantwort_14"></a>3.6.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_post_id"><a class="anchor" href="#_post_id"></a>3.7. POST /{id}</h3>
+<div class="paragraph">
+<p>Fügt einen neuen Besucher hinzu.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_11"><a class="anchor" href="#_parameter_11"></a>3.7.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_15"><a class="anchor" href="#_erfolgreiche_antwort_15"></a>3.7.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 201</p>
+</li>
+<li>
+<p>Body: true</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_15"><a class="anchor" href="#_fehlerantwort_15"></a>3.7.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: false</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_post_queuesqueueidvisitorvisitorid"><a class="anchor" href="#_post_queuesqueueidvisitorvisitorid"></a>3.8. POST /queues/{queueId}/visitor/{visitorId}</h3>
+<div class="paragraph">
+<p>Fügt einen Besucher zu einer Warteschlange hinzu.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_12"><a class="anchor" href="#_parameter_12"></a>3.8.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>queueId</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+<li>
+<p><code>visitorId</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_16"><a class="anchor" href="#_erfolgreiche_antwort_16"></a>3.8.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 201</p>
+</li>
+<li>
+<p>Body: true</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_16"><a class="anchor" href="#_fehlerantwort_16"></a>3.8.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 409</p>
+</li>
+<li>
+<p>Body: false</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_queuesqueueidvisitorvisitorid"><a class="anchor" href="#_delete_queuesqueueidvisitorvisitorid"></a>3.9. DELETE /queues/{queueId}/visitor/{visitorId}</h3>
+<div class="paragraph">
+<p>Entfernt einen Besucher aus einer Warteschlange.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_13"><a class="anchor" href="#_parameter_13"></a>3.9.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>queueId</code> (number): Die eindeutige ID der Warteschlange.</p>
+</li>
+<li>
+<p><code>visitorId</code> (number): Die eindeutige ID des Besuchers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_17"><a class="anchor" href="#_erfolgreiche_antwort_17"></a>3.9.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: true</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_17"><a class="anchor" href="#_fehlerantwort_17"></a>3.9.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: false</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_waitingpositionid"><a class="anchor" href="#_delete_waitingpositionid"></a>3.10. DELETE /waitingPosition/{id}</h3>
+<div class="paragraph">
+<p>Löscht eine Warteschlangenposition.</p>
+</div>
+<div class="sect3">
+<h4 id="_parameter_14"><a class="anchor" href="#_parameter_14"></a>3.10.1. Parameter:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (number): Die eindeutige ID der Warteschlangenposition.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erfolgreiche_antwort_18"><a class="anchor" href="#_erfolgreiche_antwort_18"></a>3.10.2. Erfolgreiche Antwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 200</p>
+</li>
+<li>
+<p>Body: true</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fehlerantwort_18"><a class="anchor" href="#_fehlerantwort_18"></a>3.10.3. Fehlerantwort:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Statuscode: 404</p>
+</li>
+<li>
+<p>Body: false</p>
+</li>
+<li>
+<p>Statuscode: 500</p>
+</li>
+<li>
+<p>Body: "Internal Server Error"</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
